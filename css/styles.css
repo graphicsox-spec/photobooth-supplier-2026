@@ -424,10 +424,10 @@ h2.section-title{
 .ev-holiday  .event-img{background-image:url('https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&w=800&q=80')}
 .ev-wedding  .event-img{background-image:url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80')}
 .ev-corporate .event-img{background-image:url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80')}
-.ev-college  .event-img{background-image:url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80')}
+.ev-college  .event-img{background-image:url('https://images.unsplash.com/photo-1607013251379-e6eecfffe234?auto=format&fit=crop&w=800&q=80')}
 .ev-private  .event-img{background-image:url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=800&q=80')}
 .ev-mitzvah  .event-img{background-image:url('https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&fit=crop&w=800&q=80')}
-.ev-dj       .event-img{background-image:url('https://images.unsplash.com/photo-1571266028243-d220c6ea4c44?auto=format&fit=crop&w=800&q=80')}
+.ev-dj       .event-img{background-image:url('https://images.unsplash.com/photo-1493676304819-0d7a8d026dcf?auto=format&fit=crop&w=800&q=80')}
 
 /* ====== AI BENTO ====== */
 .bento{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,260px);gap:18px}
