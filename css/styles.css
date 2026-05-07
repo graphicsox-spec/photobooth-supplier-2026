@@ -228,6 +228,28 @@ img,svg{max-width:100%;display:block}
 .ft-3{bottom:110px;left:20px;animation-delay:3s}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 
+/* AI Slideshow inside the hero booth screen */
+.ai-slideshow{
+  position:absolute;inset:0;
+  border-radius:inherit;overflow:hidden;
+  z-index:1;
+}
+.ai-slideshow .slide{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  opacity:0;
+  animation:aiSlideshow 25s infinite;
+  will-change:opacity;
+}
+@keyframes aiSlideshow{
+  0%   {opacity:0}
+  2%   {opacity:1}
+  18%  {opacity:1}
+  22%  {opacity:0}
+  100% {opacity:0}
+}
+
 /* AI Studio hero collage */
 .hero-collage{position:relative;height:620px}
 .hero-orb-ai{
