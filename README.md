@@ -6,81 +6,82 @@ The Best Photo Booth Supplier in New England. AI-powered, attendant-included, al
 
 ```
 .
-├── index.php                # Homepage
-├── ai-studio.php            # AI Photo Booth landing page
+├── index.html               # Homepage (main content)
+├── ai-studio.html           # AI Photo Booth landing page (main content)
 ├── includes/
-│   ├── header.php           # Shared <head> + navigation
-│   ├── footer.php           # Shared footer + scripts
-│   └── logo.php             # Reusable brand logo SVG
+│   ├── header.html          # Shared navigation + logo (edit once, both pages update)
+│   └── footer.html          # Shared footer (edit once, both pages update)
 ├── css/
 │   └── styles.css           # All site styles
 ├── js/
-│   └── main.js              # Shared interactive scripts
+│   └── main.js              # Include loader + interactive scripts
 ├── assets/
-│   └── ai-booth/            # AI Photo Booth gallery images
-│       ├── ai-sports.jpg
-│       ├── ai-cyberpunk-1.jpg
-│       └── ... (20 images)
+│   └── ai-booth/            # AI Photo Booth gallery (20 images)
 └── README.md
 ```
 
+## ✨ How it works
+
+`index.html` and `ai-studio.html` contain only **page-specific content**.
+The shared **navigation and footer** are written once in `includes/header.html`
+and `includes/footer.html`. A small JavaScript snippet in `js/main.js`
+auto-injects them into every page on load.
+
+This means: **edit the header or footer in one place, both pages update.**
+
 ## 🛠 Tech Stack
 
-- **PHP** — for shared header/footer includes (no database, just templating)
-- **HTML5** + **CSS3** — semantic markup, custom CSS variables, modern layouts
-- **Vanilla JavaScript** — no frameworks; small file, fast loads
+- **HTML5** — semantic markup, no frameworks
+- **CSS3** — custom properties (variables), grid + flex, responsive
+- **Vanilla JavaScript** — small file, fast loads, dynamic include loader
 - **Google Fonts** — Inter (UI) + Instrument Serif (display italic)
 
 ## 🚀 Local Preview
 
-You need PHP installed locally to preview. Most computers have PHP available.
+Because the site uses `fetch()` to load shared includes, you need to serve it
+through a local HTTP server (not just double-click the file).
 
-### Option 1 — Built-in PHP server (easiest)
+### Easiest — VS Code Live Server (free)
 
-Open a terminal in the project root and run:
+1. Install [VS Code](https://code.visualstudio.com/)
+2. Install the **Live Server** extension (by Ritwick Dey)
+3. Right-click `index.html` → **Open with Live Server**
+4. Browser opens automatically with auto-reload on save
+
+### Alternative — Python built-in server
 
 ```bash
-php -S localhost:8000
+python3 -m http.server 8000
 ```
 
-Then open <http://localhost:8000> in your browser.
+Then visit <http://localhost:8000>.
 
-### Option 2 — XAMPP / MAMP / WAMP
+> ⚠️ Double-clicking the `.html` file will *not* work — Chrome blocks `fetch()`
+> on `file://` URLs for security. Always serve through a local server.
 
-Place this folder inside your `htdocs` (or equivalent) directory and visit
-<http://localhost/Photobooth%20Supplier%202026/>.
+## 🌐 Deploying to GitHub Pages
 
-### Option 3 — VS Code Live Server with PHP plugin
+This repo is ready for **GitHub Pages**. Just push and enable:
 
-Install the *PHP Server* extension in VS Code, then right-click `index.php` →
-*PHP Server: Serve project*.
+1. Push everything to your GitHub repo (`git push`)
+2. Repo **Settings** → **Pages** → Branch: `main` → **Save**
+3. Wait 2 minutes — your site goes live at
+   `https://<username>.github.io/<repo-name>/`
 
-## 🌐 Deploying
-
-This site runs on **any** PHP-enabled web host (cPanel, Hostinger, Bluehost,
-SiteGround, etc.).
-
-1. Upload the entire folder to your hosting `public_html` directory via FTP or
-   the host's file manager.
-2. Make sure the host has PHP 7.4 or newer enabled (default on most hosts).
-3. Done — visit your domain.
-
-> **GitHub Pages note:** GitHub Pages only serves static HTML, so PHP includes
-> won't render there. Use a PHP host (most paid hosts include PHP) for
-> deployment, or convert PHP includes to static HTML if you specifically need
-> GitHub Pages.
+That's it. GitHub Pages serves the static files; the include loader fetches
+header/footer over HTTPS without issue.
 
 ## ✏️ Editing Content
 
-| What you want to change       | File to edit                       |
-|-------------------------------|------------------------------------|
-| Page text / sections          | `index.php` or `ai-studio.php`     |
-| Top navigation menu           | `includes/header.php`              |
-| Footer links / contact info   | `includes/footer.php`              |
-| Brand colors, fonts, layout   | `css/styles.css`                   |
-| Site logo                     | `includes/logo.php`                |
-| Animations / interactions     | `js/main.js`                       |
-| AI Photo Booth gallery images | `assets/ai-booth/` (replace files) |
+| What you want to change       | File to edit                         |
+|-------------------------------|--------------------------------------|
+| Homepage content              | `index.html`                         |
+| AI Studio page content        | `ai-studio.html`                     |
+| **Top navigation menu**       | `includes/header.html` *(both pages)* |
+| **Footer / contact info**     | `includes/footer.html` *(both pages)* |
+| Brand colors, fonts, layout   | `css/styles.css`                     |
+| Animations / interactions     | `js/main.js`                         |
+| AI Photo Booth gallery images | `assets/ai-booth/` (replace files)   |
 
 ## 🎨 Brand
 

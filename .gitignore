@@ -18,6 +18,5 @@ Thumbs.db
 /vendor/
 composer.lock
 
-# Old HTML versions (keep PHP files only)
-index.html
-ai-studio.html
+# Old PHP files (we use static HTML now)
+*.php

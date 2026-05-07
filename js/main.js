@@ -2,10 +2,33 @@
    PHOTO BOOTH SUPPLIER — Main JavaScript
    =================================================================== */
 
-(function () {
+(async function () {
   'use strict';
 
-  // Subtle parallax effect on hero orb (homepage + AI studio page)
+  // ----- Load shared HTML includes (header / footer) -----
+  const placeholders = document.querySelectorAll('[data-include]');
+  await Promise.all(
+    Array.from(placeholders).map(async (el) => {
+      try {
+        const url = el.getAttribute('data-include');
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(res.statusText);
+        const html = await res.text();
+        el.outerHTML = html;
+      } catch (err) {
+        console.error('Failed to load include:', el, err);
+      }
+    })
+  );
+
+  // ----- Mark current page in navigation (active state) -----
+  const path = location.pathname.split('/').pop() || 'index.html';
+  if (path === 'ai-studio.html') {
+    const aiLink = document.querySelector('.ai-link');
+    if (aiLink) aiLink.classList.add('active');
+  }
+
+  // ----- Subtle parallax effect on hero orb -----
   const orb = document.querySelector('.hero-orb, .hero-orb-ai');
   if (orb) {
     document.addEventListener('mousemove', (e) => {
@@ -15,7 +38,7 @@
     });
   }
 
-  // Booth tab switching (homepage)
+  // ----- Booth tab switching (homepage) -----
   const boothTabs = document.querySelectorAll('.booth-tab');
   if (boothTabs.length) {
     boothTabs.forEach((t) => {
@@ -26,7 +49,7 @@
     });
   }
 
-  // Reveal-on-scroll fade-up animation for cards
+  // ----- Reveal-on-scroll fade-up animation -----
   const reveal = new IntersectionObserver(
     (entries) => {
       entries.forEach((en) => {
