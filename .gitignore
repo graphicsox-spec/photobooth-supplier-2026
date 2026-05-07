@@ -1,0 +1,23 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.*
+
+# Composer (if added later)
+/vendor/
+composer.lock
+
+# Old HTML versions (keep PHP files only)
+index.html
+ai-studio.html

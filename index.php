@@ -1,0 +1,427 @@
+<?php
+$page_title = 'Photo Booth Supplier — The Best Photo Booth Supplier in New England';
+$page_desc  = "New England's most trusted photo booth supplier since 2012. 30+ booths including AI Photo Booth, 360 Slow Motion, Magic Mirror, Glam, Roamers & more. Weddings, Mitzvahs, Brand Activations.";
+include 'includes/header.php';
+?>
+
+<!-- ====== HERO ====== -->
+<header class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <div class="hero-pill">
+        <span class="hero-pill-badge">2026</span>
+        Now featuring AI Photo Booth — try it at your next event
+      </div>
+      <h1>
+        The Best Photo Booth Supplier in <span class="serif gradient-text">New England.</span>
+      </h1>
+      <p class="sub">
+        14 years. 30+ booth styles. From classic open-air and 360° slow motion to our brand-new <a href="ai-studio.php" style="color:var(--brand-blue-light);text-decoration:underline">AI Photo Booth</a> — we bring the booth that fits your vibe.
+      </p>
+      <div class="hero-actions">
+        <a href="#booths" class="btn btn-light">Explore 30+ Booths →</a>
+        <a href="#contact" class="btn btn-ghost">Request a Quote</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">14+</div><div class="label">Years in Business</div></div>
+        <div class="hero-stat"><div class="num">876+</div><div class="label">Events Completed</div></div>
+        <div class="hero-stat"><div class="num">16,247</div><div class="label">Guests Served</div></div>
+        <div class="hero-stat"><div class="num">27,435</div><div class="label">Pictures Taken</div></div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-orb"></div>
+      <div class="mockup-card">
+        <div class="booth-screen">
+          <div class="booth-face">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#084f99" stroke-width="1.6">
+              <circle cx="12" cy="10" r="4"/>
+              <path d="M4 21c0-4 4-7 8-7s8 3 8 7"/>
+            </svg>
+          </div>
+        </div>
+        <div class="booth-controls">
+          <div class="booth-rec"><span class="rec-dot"></span>AI ENHANCING</div>
+          <div class="booth-shutter"></div>
+        </div>
+      </div>
+      <div class="floating-tag ft-1">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2zm6 10l.94 2.56L21.5 15l-2.56.94L18 18.5l-.94-2.56L14.5 15l2.56-.94L18 12zM6 14l.94 2.56L9.5 17.5l-2.56.94L6 21l-.94-2.56L2.5 17.5l2.56-.94L6 14z"/></svg></div>
+        <span>AI Filters Applied</span>
+      </div>
+      <div class="floating-tag ft-2">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg></div>
+        <span>Sharing to iMessage</span>
+      </div>
+      <div class="floating-tag ft-3">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></div>
+        <span>360° Boomerang Ready</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ====== TRUST MARQUEE ====== -->
+<section class="marquee-section" style="padding:48px 0">
+  <div class="container">
+    <div class="marquee-label">Trusted by event planners &amp; venues across New England since 2012</div>
+  </div>
+  <div class="marquee">
+    <span class="marquee-item">Boston Harbor Hotel</span>
+    <span class="marquee-item">Fenway Park</span>
+    <span class="marquee-item">Newport Vineyards</span>
+    <span class="marquee-item">Wayfair</span>
+    <span class="marquee-item">New Balance</span>
+    <span class="marquee-item">MIT</span>
+    <span class="marquee-item">Liberty Mutual</span>
+    <span class="marquee-item">Boston Harbor Hotel</span>
+    <span class="marquee-item">Fenway Park</span>
+    <span class="marquee-item">Newport Vineyards</span>
+    <span class="marquee-item">Wayfair</span>
+    <span class="marquee-item">New Balance</span>
+    <span class="marquee-item">MIT</span>
+    <span class="marquee-item">Liberty Mutual</span>
+  </div>
+</section>
+
+<!-- ====== EVENTS WE SERVE ====== -->
+<section class="events-section" id="events">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">What We Do</span>
+      <h2 class="section-title">Built for every <span class="serif">moment.</span></h2>
+      <p class="section-sub">Weddings, Mitzvahs, Sweet 16s, Brand Activations, and corporate events — every booth is dialed in for your vibe and crowd.</p>
+    </div>
+    <div class="events-grid">
+      <div class="event-card">
+        <div class="event-bg ev-1"><svg viewBox="0 0 24 24"><path d="M19.33 8.5l-2.91-4.84A1.99 1.99 0 0014.71 3H9.29c-.71 0-1.36.37-1.71.99L4.67 8.5a2 2 0 00.27 2.42l6.36 7.07c.4.45 1.1.45 1.5 0l6.36-7.07a2 2 0 00.27-2.42zM12 16.5L6.5 10h11L12 16.5z"/></svg></div>
+        <div class="event-content"><h4>Weddings</h4><p>Romantic, cinematic, unforgettable</p></div>
+      </div>
+      <div class="event-card">
+        <div class="event-bg ev-2"><svg viewBox="0 0 24 24"><path d="M12 2L9.5 7H4l4.5 3.5L7 16l5-3.5 5 3.5-1.5-5.5L20 7h-5.5L12 2z"/></svg></div>
+        <div class="event-content"><h4>Mitzvahs</h4><p>Bar &amp; Bat Mitzvah party energy</p></div>
+      </div>
+      <div class="event-card">
+        <div class="event-bg ev-3"><svg viewBox="0 0 24 24"><path d="M12 6c1.1 0 2-.9 2-2 0-.38-.1-.73-.29-1.03L12 0l-1.71 2.97c-.19.3-.29.65-.29 1.03 0 1.1.9 2 2 2zm4.6 9.99l-1.07-1.07-1.08 1.07c-1.3 1.3-3.58 1.31-4.89 0l-1.07-1.07-1.09 1.07C6.75 16.64 5.88 17 4.96 17c-.73 0-1.4-.23-1.96-.61V21c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-4.61c-.56.38-1.23.61-1.96.61-.92 0-1.79-.36-2.44-1.01zM18 9h-5V7h-2v2H6c-1.66 0-3 1.34-3 3v1.54c0 1.08.88 1.96 1.96 1.96.52 0 1.02-.2 1.38-.57l2.14-2.13 2.13 2.13c.74.74 2.03.74 2.77 0l2.14-2.13 2.13 2.13c.37.37.86.57 1.38.57 1.08 0 1.96-.88 1.96-1.96V12C21 10.34 19.66 9 18 9z"/></svg></div>
+        <div class="event-content"><h4>Sweet Sixteens</h4><p>Glam, glitter &amp; viral moments</p></div>
+      </div>
+      <div class="event-card">
+        <div class="event-bg ev-4"><svg viewBox="0 0 24 24"><path d="M13.13 22.19l-1.63-3.83c1.55-.58 2.94-1.39 4.18-2.34l-2.55 6.17zM5.64 12.5l-3.83-1.63 6.18-2.56c-.95 1.25-1.76 2.64-2.35 4.19zM21.61 2.39S16.66.269 11 5.93c-2.19 2.19-3.5 4.6-4.35 6.81-.28.75-.09 1.57.46 2.13l2.02 2.02c.55.55 1.38.74 2.13.46 2.21-.85 4.62-2.16 6.81-4.35 5.66-5.66 3.54-10.61 3.54-10.61zm-7.07 7.07c-.78-.78-.78-2.05 0-2.83.78-.78 2.05-.78 2.83 0 .77.78.78 2.05 0 2.83-.78.78-2.05.78-2.83 0zM5.5 15.5c-1.5 1.5-2 5.5-2 5.5s4 0 5.5-1.5c.84-.84.83-2.18 0-3.03-.84-.84-2.16-.84-3 .03z"/></svg></div>
+        <div class="event-content"><h4>Brand Activations</h4><p>Branded prints, lead capture &amp; social shares</p></div>
+      </div>
+      <div class="event-card">
+        <div class="event-bg ev-5"><svg viewBox="0 0 24 24"><path d="M21 5V3H3v2l8 9v5H6v2h12v-2h-5v-5l8-9zM7.43 7L5.66 5h12.69l-1.78 2H7.43z"/></svg></div>
+        <div class="event-content"><h4>Private Events</h4><p>Birthdays, anniversaries, reunions</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== AI PHOTO BOOTH FEATURE ====== -->
+<section id="ai">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Meet our flagship · New for 2026</span>
+      <h2 class="section-title">Step in. <span class="serif">Become anyone.</span></h2>
+      <p class="section-sub">Our brand-new <strong style="color:var(--text)">AI Photo Booth</strong> turns your guests into astronauts, warriors, Gatsby legends, cyberpunk heroes — anything they can imagine. Available as a standalone booth, perfect alongside your other booth picks.</p>
+    </div>
+    <div class="bento">
+      <div class="bento-card b1">
+        <span class="bento-tag">AI Photo Booth</span>
+        <div class="bento-icon"><svg viewBox="0 0 24 24"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2zm6 10l.94 2.56L21.5 15l-2.56.94L18 18.5l-.94-2.56L14.5 15l2.56-.94L18 12zM6 14l.94 2.56L9.5 17.5l-2.56.94L6 21l-.94-2.56L2.5 17.5l2.56-.94L6 14z"/></svg></div>
+        <div>
+          <h3>50+ themes. Live generation. Zero limits.</h3>
+          <p>Pick a style — sci-fi, vintage, fantasy, glam, sports — and the AI re-imagines your guest in that world in under 10 seconds.</p>
+        </div>
+        <div class="b1-visual"></div>
+      </div>
+      <div class="bento-card b2">
+        <span class="bento-tag">Flagship</span>
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2L13.76 6.57L18.66 6.84L14.85 9.93L16.12 14.66L12 12L7.88 14.66L9.15 9.93L5.34 6.84L10.24 6.57L12 2Z" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="12" cy="11.8" r="2.2" fill="#fff"/>
+            <path d="M6 22c0-3.31 2.69-6 6-6s6 2.69 6 6v1H6v-1z" fill="#fff"/>
+          </svg>
+        </div>
+        <h3>Iconic Characters</h3>
+        <p>Movie villains, anime heroes, comic legends — guests step into the role of their dreams.</p>
+      </div>
+      <div class="bento-card b3">
+        <span class="bento-tag">Trending</span>
+        <div class="bento-icon"><svg viewBox="0 0 24 24"><path d="M13.13 22.19l-1.63-3.83c1.55-.58 2.94-1.39 4.18-2.34l-2.55 6.17zM5.64 12.5l-3.83-1.63 6.18-2.56c-.95 1.25-1.76 2.64-2.35 4.19zM21.61 2.39S16.66.269 11 5.93c-2.19 2.19-3.5 4.6-4.35 6.81-.28.75-.09 1.57.46 2.13l2.02 2.02c.55.55 1.38.74 2.13.46 2.21-.85 4.62-2.16 6.81-4.35 5.66-5.66 3.54-10.61 3.54-10.61zm-7.07 7.07c-.78-.78-.78-2.05 0-2.83.78-.78 2.05-.78 2.83 0 .77.78.78 2.05 0 2.83-.78.78-2.05.78-2.83 0z"/></svg></div>
+        <h3>Adventure Worlds</h3>
+        <p>Astronauts, deep-sea divers, pirates, polar explorers — fantasy travel for a single shot.</p>
+      </div>
+      <div class="bento-card b4">
+        <span class="bento-tag">Brand-Ready</span>
+        <div class="bento-icon"><svg viewBox="0 0 24 24"><path d="M12 22C6.49 22 2 17.51 2 12S6.49 2 12 2s10 4.04 10 9c0 3.31-2.69 6-6 6h-1.77c-.28 0-.5.22-.5.5 0 .12.05.23.13.33.41.47.64 1.06.64 1.67 0 1.38-1.12 2.5-2.5 2.5zM12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8c.28 0 .5-.22.5-.5 0-.16-.08-.28-.14-.35-.41-.46-.63-1.05-.63-1.65 0-1.38 1.12-2.5 2.5-2.5H16c2.21 0 4-1.79 4-4 0-3.86-3.59-7-8-7zM6.5 11.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5S8.83 13 8 13s-1.5-.67-1.5-1.5zm3-4C9.5 6.67 10.17 6 11 6s1.5.67 1.5 1.5S11.83 9 11 9s-1.5-.67-1.5-1.5zm5 0c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5S16.83 9 16 9s-1.5-.67-1.5-1.5zm3 4c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5z"/></svg></div>
+        <h3>Custom Branded Themes</h3>
+        <p>For corporate events and activations, we build a fully custom AI universe around your brand — logo-stamped, color-matched, lead-capture ready.</p>
+      </div>
+      <div class="bento-card b5">
+        <div class="bento-icon"><svg viewBox="0 0 24 24"><path d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66.19-.34.05-.08.07-.12C8.48 10.94 10.42 7.54 13 3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15C12.96 17.55 11 21 11 21z"/></svg></div>
+        <h3>Under 10 Seconds</h3>
+        <p>Capture, generate, deliver — fast enough to keep the line moving at packed events.</p>
+      </div>
+      <div class="bento-card b6">
+        <div class="bento-icon"><svg viewBox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h13V3z"/></svg></div>
+        <h3>Print + Share Instantly</h3>
+        <p>Branded 4×6 prints + digital copies via AirDrop, SMS, or email. Every guest leaves with their portrait.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px">
+      <a href="ai-studio.php" class="btn btn-primary">Explore the AI Photo Booth →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== BOOTHS ====== -->
+<section class="booths-section" id="booths">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Our Booths</span>
+      <h2 class="section-title">30+ booths. <span class="serif">One perfect match.</span></h2>
+      <p class="section-sub">Browse by category. Every booth ships with our AI-ready software, attendant, and instant share suite.</p>
+    </div>
+
+    <div class="booths-tabs">
+      <button class="booth-tab active">All</button>
+      <button class="booth-tab">AI &amp; Smart</button>
+      <button class="booth-tab">Mirror Booths</button>
+      <button class="booth-tab">360° &amp; Motion</button>
+      <button class="booth-tab">Open Air</button>
+      <button class="booth-tab">Roamers</button>
+      <button class="booth-tab">Sports &amp; Print</button>
+      <button class="booth-tab">Specialty</button>
+    </div>
+
+    <div class="booth-grid">
+      <a href="ai-studio.php" class="booth-card" style="text-decoration:none;color:inherit;display:block">
+        <div class="booth-thumb bg-3"><span class="booth-badge ai">AI Powered</span>
+          <svg viewBox="0 0 100 100" fill="none"><rect x="20" y="15" width="60" height="75" rx="8" fill="#fff"/><rect x="26" y="22" width="48" height="55" rx="4" fill="#0a0d14"/><text x="50" y="55" text-anchor="middle" font-size="22" fill="#7c5cff" font-family="serif" font-style="italic">AI</text></svg>
+        </div>
+        <div class="booth-info">
+          <h4>AI Photo Booth</h4>
+          <p>50+ themes. Generative portraits in under 10 seconds.</p>
+          <div class="booth-arrow">Learn more →</div>
+        </div>
+      </a>
+      <div class="booth-card">
+        <div class="booth-thumb bg-1"><span class="booth-badge hot">Most Popular</span>
+          <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="32" stroke="#fff" stroke-width="3" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="50" r="16" fill="#fff"/><circle cx="50" cy="50" r="10" fill="#0a0d14"/></svg>
+        </div>
+        <div class="booth-info">
+          <h4>360 Slow Motion Booth</h4>
+          <p>4K cinematic spin videos that go viral.</p>
+          <div class="booth-arrow">Learn more →</div>
+        </div>
+      </div>
+      <div class="booth-card">
+        <div class="booth-thumb bg-2">
+          <svg viewBox="0 0 100 100" fill="none"><rect x="22" y="10" width="56" height="80" rx="6" fill="#fff"/><rect x="28" y="16" width="44" height="60" rx="2" fill="#0a0d14"/><circle cx="50" cy="46" r="14" fill="rgba(255,255,255,0.2)"/></svg>
+        </div>
+        <div class="booth-info">
+          <h4>Selfie Mirror Booth</h4>
+          <p>Full-length mirror with animated touch UI.</p>
+          <div class="booth-arrow">Learn more →</div>
+        </div>
+      </div>
+      <div class="booth-card">
+        <div class="booth-thumb bg-6">
+          <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="35" stroke="#fff" stroke-width="2" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="50" r="22" stroke="#fff" stroke-width="2" fill="none"/><circle cx="50" cy="50" r="10" fill="#fff"/></svg>
+        </div>
+        <div class="booth-info">
+          <h4>Infinity Mirror Booth</h4>
+          <p>Endless reflections, surreal portraits.</p>
+          <div class="booth-arrow">Learn more →</div>
+        </div>
+      </div>
+      <div class="booth-card">
+        <div class="booth-thumb bg-4">
+          <svg viewBox="0 0 100 100" fill="none"><rect x="22" y="35" width="56" height="40" rx="6" fill="#fff"/><circle cx="50" cy="55" r="14" fill="#0a0d14"/><circle cx="50" cy="55" r="9" fill="#7c5cff"/></svg>
+        </div>
+        <div class="booth-info">
+          <h4>Glam Photo Booth</h4>
+          <p>Beauty lighting + high-key Kardashian glow.</p>
+          <div class="booth-arrow">Learn more →</div>
+        </div>
+      </div>
+      <div class="booth-card">
+        <div class="booth-thumb bg-5"><span class="booth-badge new">Hot</span>
+          <svg viewBox="0 0 100 100" fill="none"><rect x="35" y="20" width="30" height="50" rx="4" fill="#fff"/><rect x="38" y="24" width="24" height="34" rx="2" fill="#0a0d14"/><path d="M40 78 L60 78 L65 88 L35 88 Z" fill="#fff"/></svg>
+        </div>
+        <div class="booth-info">
+          <h4>Deluxe Social Roamer</h4>
+          <p>Walking iPad attendant — shoots anywhere.</p>
+          <div class="booth-arrow">Learn more →</div>
+        </div>
+      </div>
+      <div class="booth-card">
+        <div class="booth-thumb bg-1">
+          <svg viewBox="0 0 100 100" fill="none"><rect x="22" y="35" width="56" height="40" rx="4" fill="#fff"/><circle cx="50" cy="55" r="14" fill="#0a0d14"/><rect x="42" y="28" width="16" height="10" rx="2" fill="#fff"/></svg>
+        </div>
+        <div class="booth-info">
+          <h4>Open Air Photo Booth</h4>
+          <p>Classic open-air with DSLR &amp; studio lights.</p>
+          <div class="booth-arrow">Learn more →</div>
+        </div>
+      </div>
+      <div class="booth-card">
+        <div class="booth-thumb bg-3">
+          <svg viewBox="0 0 100 100" fill="none"><rect x="20" y="25" width="60" height="50" rx="4" fill="#fff"/><rect x="25" y="30" width="22" height="40" fill="#7c5cff"/><rect x="50" y="30" width="25" height="40" fill="#0a0d14"/><text x="62" y="55" text-anchor="middle" font-size="14" fill="#fff" font-weight="bold">5</text></svg>
+        </div>
+        <div class="booth-info">
+          <h4>Custom Sports Cards</h4>
+          <p>Turn guests into trading card stars.</p>
+          <div class="booth-arrow">Learn more →</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="booths-cta-wrap">
+      <a href="#" class="btn btn-primary">View All 30+ Booths →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== STATS BAND ====== -->
+<section class="stats-band">
+  <div class="container stats-band-inner">
+    <h3>You pick.<br>We deliver. <span class="serif">Every time.</span></h3>
+    <div class="stats-band-grid">
+      <div class="stat-big"><div class="num">14</div><div class="label">Years in Business</div></div>
+      <div class="stat-big"><div class="num">876</div><div class="label">Events Completed</div></div>
+      <div class="stat-big"><div class="num">16,247</div><div class="label">Guests Serviced</div></div>
+      <div class="stat-big"><div class="num">27,435</div><div class="label">Pictures Taken</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== HOW IT WORKS ====== -->
+<section class="how-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">How It Works</span>
+      <h2 class="section-title">From quote to <span class="serif">unforgettable.</span></h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-num">01</div><h4>Pick your booth</h4><p>Browse 30+ styles. We'll match it to your venue, theme &amp; headcount.</p></div>
+      <div class="step"><div class="step-num">02</div><h4>Customize the experience</h4><p>Upload your brand kit. We design custom prints, backdrops, and (for AI Photo Booth) themed AI scenes.</p></div>
+      <div class="step"><div class="step-num">03</div><h4>We arrive &amp; set up</h4><p>Trained crew arrives 90 min early. Booth is live before doors open.</p></div>
+      <div class="step"><div class="step-num">04</div><h4>Guests share &amp; smile</h4><p>Instant prints, AirDrops, SMS &amp; Instagram. Plus a full event gallery for you next morning.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== ADD-ONS ====== -->
+<section class="addons-section" id="addons">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Complete Your Event</span>
+      <h2 class="section-title">More than <span class="serif">just booths.</span></h2>
+      <p class="section-sub">Bundle our booths with dance floors, uplighting &amp; custom backdrops for one seamless event.</p>
+    </div>
+    <div class="addons-grid">
+      <div class="addon-card">
+        <div class="addon-icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="3" width="4" height="4" rx="0.5"/><rect x="10" y="3" width="4" height="4" rx="0.5"/><rect x="17" y="3" width="4" height="4" rx="0.5"/>
+            <rect x="3" y="10" width="4" height="4" rx="0.5"/><rect x="10" y="10" width="4" height="4" rx="0.5"/><rect x="17" y="10" width="4" height="4" rx="0.5"/>
+            <rect x="3" y="17" width="4" height="4" rx="0.5"/><rect x="10" y="17" width="4" height="4" rx="0.5"/><rect x="17" y="17" width="4" height="4" rx="0.5"/>
+          </svg>
+        </div>
+        <div>
+          <h4>LED Dance Floors</h4>
+          <p>Custom-printed and color-changing LED dance floors that turn your reception into a party.</p>
+        </div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-icon"><svg viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></svg></div>
+        <div>
+          <h4>Uplighting</h4>
+          <p>Wash any room in your wedding colors. Wireless, programmable, dimmable.</p>
+        </div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/></svg></div>
+        <div>
+          <h4>Custom Backdrops</h4>
+          <p>Branded step-and-repeats, themed sets, sequin walls — built for your event.</p>
+        </div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-icon"><svg viewBox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h13V3z"/></svg></div>
+        <div>
+          <h4>Branded Print Templates</h4>
+          <p>Custom-designed print layouts that match your invite, theme, or brand book.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== TESTIMONIALS ====== -->
+<section class="testimonials-section" id="gallery">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Loved by Event Planners</span>
+      <h2 class="section-title">Smiles that say <span class="serif">it all.</span></h2>
+    </div>
+  </div>
+  <div class="testimonial-marquee">
+    <div class="testimonial-track">
+      <?php
+      $testimonials = [
+        ['EM', 'Emily & Michael', 'Wedding · Newport, RI', '"The AI background feature was the talk of our wedding. Guests are still sending us their teleported-to-Paris photos a month later."'],
+        ['JC', 'Jordan Carter', 'Events Director · Wayfair, Boston', '"Setup was 60 minutes flat. The 360 booth pulled a crowd of 400+ people. Best investment of the entire activation."'],
+        ['SO', 'Sarah O\'Brien', 'Mitzvah · Cambridge, MA', '"Voice-activated capture was a hit at our Bar Mitzvah. Even the kindergarteners figured it out. That\'s the real test."'],
+        ['MS', 'Megan Sullivan', 'Wedding · Cape Cod, MA', '"The Magic Mirror booth was an absolute showstopper. Our guests couldn\'t get enough — and the prints came out gorgeous."'],
+        ['DC', 'David Chen', 'MIT · Cambridge, MA', '"Hired them for our department event at MIT. Professional, on-time, and the AI Photo Booth blew everyone\'s mind. Highly recommend."'],
+        ['RG', 'Rachel Goldberg', 'Bat Mitzvah · Brookline, MA', '"My daughter\'s Bat Mitzvah was perfect. The Glam booth made every single guest feel like a celebrity. Worth every penny."'],
+        ['TR', 'Tom Reilly', 'Sweet 16 · Providence, RI', '"Booked the Roamer for my daughter\'s Sweet 16. The attendant was incredible with the kids — total pro. Photos are still trending on her TikTok."'],
+        ['AF', 'Amanda Foster', 'Wedding · Burlington, VT', '"Everything from quote to delivery was seamless. The 360 booth is what people are still talking about. Five stars across the board."'],
+        ['CM', 'Chris Marino', 'Brand Manager · Liberty Mutual', '"Used for our brand activation in Boston. Custom branded prints, lead capture worked flawlessly. Pulled a 4-hour line all day."'],
+        ['OW', 'Olivia Walsh', 'Birthday · Hartford, CT', '"Amazing experience from start to finish. The custom backdrop matched our theme perfectly and the prints were keepsakes guests still cherish."'],
+      ];
+      // Render twice for seamless infinite loop
+      foreach (array_merge($testimonials, $testimonials) as $t):
+      ?>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p><?php echo $t[3]; ?></p>
+        <div class="testimonial-author">
+          <div class="author-avatar"><?php echo $t[0]; ?></div>
+          <div>
+            <div class="author-name"><?php echo $t[1]; ?></div>
+            <div class="author-meta"><?php echo $t[2]; ?></div>
+          </div>
+        </div>
+      </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CTA ====== -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="cta-box">
+      <h2>Ready to make your next event <span class="serif">unforgettable?</span></h2>
+      <p>Free consultation. Custom quote in 24 hours. Serving all of New England — Boston, Providence, Hartford, Portland, Burlington &amp; beyond.</p>
+      <div class="btn-row">
+        <a href="tel:8005671676" class="btn btn-light">
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+          800-567-1676
+        </a>
+        <a href="mailto:photoboothsupplier@gmail.com" class="btn btn-ghost" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.3);color:#fff">
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          Request a Quote
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<?php include 'includes/footer.php'; ?>
