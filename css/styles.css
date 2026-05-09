@@ -520,8 +520,8 @@ h2.section-title{
 .b1 .bento-tag{background:rgba(255,255,255,0.2);color:#fff;border-color:rgba(255,255,255,0.3)}
 /* B1 flagship card — animated shuffle deck */
 .b1{position:relative;overflow:hidden}
-.b1 .bento-icon,
-.b1 .bento-tag{position:relative;z-index:3}
+.b1 .bento-icon{position:relative;z-index:3}
+.b1 .bento-tag{z-index:3}
 .b1 h3,.b1 p{max-width:340px;position:relative;z-index:3;text-shadow:0 2px 12px rgba(0,0,0,0.35)}
 
 /* Synced background — same theme image fills card at low opacity, blurred */
