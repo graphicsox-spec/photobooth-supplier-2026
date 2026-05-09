@@ -518,31 +518,75 @@ h2.section-title{
 .b1 h3{font-size:36px;line-height:1.05;color:#fff}
 .b1 p{color:rgba(255,255,255,0.9);font-size:16px;max-width:340px}
 .b1 .bento-tag{background:rgba(255,255,255,0.2);color:#fff;border-color:rgba(255,255,255,0.3)}
-/* B1 flagship card — clean 2x2 AI portrait showcase */
+/* B1 flagship card — animated shuffle deck */
 .b1{position:relative;overflow:hidden}
-.b1 h3,.b1 p{max-width:340px;position:relative;z-index:2}
-.b1-showcase{
+.b1 h3,.b1 p{max-width:340px;position:relative;z-index:3}
+.b1-deck{
   position:absolute;
-  right:24px;bottom:24px;
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:10px;
-  width:240px;
+  right:36px;bottom:32px;
+  width:200px;height:265px;
   pointer-events:none;
-  z-index:1;
+  z-index:2;
 }
-.b1-showcase img{
-  width:100%;aspect-ratio:3/4;
-  border-radius:12px;object-fit:cover;
-  border:2px solid rgba(255,255,255,0.18);
-  box-shadow:0 10px 24px rgba(0,0,0,0.4);
-  transition:transform .35s ease,box-shadow .35s ease;
+/* "LIVE GENERATION" pill above the deck */
+.b1-deck-label{
+  position:absolute;
+  top:-14px;left:50%;
+  transform:translateX(-50%);
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(0,0,0,0.6);backdrop-filter:blur(20px);
+  padding:5px 12px;border-radius:999px;
+  font-size:10px;font-weight:700;letter-spacing:0.1em;color:#fff;
+  border:1px solid rgba(255,255,255,0.15);
+  white-space:nowrap;z-index:10;
 }
-.bento-card.b1:hover .b1-showcase img{
-  box-shadow:0 14px 30px rgba(0,0,0,0.55);
+.b1-deck-label .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:#00e0c7;
+  box-shadow:0 0 8px #00e0c7;
+  animation:liveDot 1.5s ease-in-out infinite;
 }
-.bento-card.b1:hover .b1-showcase img:nth-child(1){transform:translate(-3px,-3px)}
-.bento-card.b1:hover .b1-showcase img:nth-child(4){transform:translate(3px,3px)}
+@keyframes liveDot{50%{opacity:0.4;transform:scale(0.85)}}
+
+/* Static "deck" silhouettes behind active card */
+.b1-deck-stage{
+  position:relative;width:100%;height:100%;
+}
+.b1-deck-stage::before,
+.b1-deck-stage::after{
+  content:"";position:absolute;inset:0;
+  border-radius:18px;
+  background:rgba(255,255,255,0.05);
+  border:2px solid rgba(255,255,255,0.1);
+  box-shadow:0 12px 24px rgba(0,0,0,0.3);
+}
+.b1-deck-stage::before{transform:translate(-14px,10px) rotate(-4deg);z-index:0}
+.b1-deck-stage::after{transform:translate(-7px,5px) rotate(-2deg);z-index:1}
+
+/* Active card — animates through portraits */
+.b1-deck-stage img{
+  position:absolute;
+  inset:0;width:100%;height:100%;
+  border-radius:18px;object-fit:cover;
+  border:3px solid rgba(255,255,255,0.3);
+  box-shadow:0 24px 50px rgba(0,0,0,0.55),0 0 0 1px rgba(255,255,255,0.1);
+  opacity:0;
+  animation:b1Shuffle 20s infinite cubic-bezier(0.45,0,0.2,1);
+}
+.b1-deck-stage img:nth-child(1){animation-delay:0s}
+.b1-deck-stage img:nth-child(2){animation-delay:-4s}
+.b1-deck-stage img:nth-child(3){animation-delay:-8s}
+.b1-deck-stage img:nth-child(4){animation-delay:-12s}
+.b1-deck-stage img:nth-child(5){animation-delay:-16s}
+
+@keyframes b1Shuffle{
+  /* Each card visible 3s out of 20s. 5 cards × 4s slot = 20s loop. */
+  0%   {transform:translate(40px,-20px) rotate(12deg) scale(0.85);opacity:0;z-index:0}
+  3%   {transform:translate(0,0) rotate(0) scale(1);opacity:1;z-index:5}
+  17%  {transform:translate(0,0) rotate(0) scale(1);opacity:1;z-index:5}
+  20%  {transform:translate(-100%,30px) rotate(-18deg) scale(0.85);opacity:0;z-index:4}
+  21%,100% {transform:translate(40px,-20px) rotate(12deg) scale(0.85);opacity:0;z-index:0}
+}
 .b2 .bento-icon,
 .b3 .bento-icon,
 .b4 .bento-icon,
@@ -1002,8 +1046,8 @@ a.fcb-item:hover{color:var(--brand-blue-light)}
   .bento{grid-template-columns:repeat(2,1fr);grid-template-rows:auto}
   .b1,.b4{grid-column:span 2}
   .b1{grid-row:span 1}
-  .b1-showcase{width:200px;right:18px;bottom:18px;gap:8px}
-  .b1 h3,.b1 p{max-width:calc(100% - 220px)}
+  .b1-deck{width:170px;height:225px;right:24px;bottom:24px}
+  .b1 h3,.b1 p{max-width:calc(100% - 200px)}
   .booth-grid{grid-template-columns:repeat(2,1fr)}
   .stats-band-inner{grid-template-columns:1fr}
   .stats-band-grid{grid-template-columns:repeat(2,1fr)}
@@ -1022,9 +1066,9 @@ a.fcb-item:hover{color:var(--brand-blue-light)}
   .booth-grid{grid-template-columns:1fr}
   .b1{padding-bottom:24px}
   .b1 h3,.b1 p{max-width:100%}
-  .b1-showcase{
-    position:static;width:100%;margin-top:18px;
-    grid-template-columns:repeat(4,1fr);
+  .b1-deck{
+    position:static;width:100%;max-width:240px;
+    margin:24px auto 0;
   }
   .styles-grid,.uses-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
