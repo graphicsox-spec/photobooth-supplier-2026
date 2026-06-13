@@ -86,33 +86,107 @@
       reveal.observe(el);
     });
 
-  // ----- Events spotlight — expanding panels with auto-rotate -----
-  const spotlight = document.getElementById('events-spotlight');
-  if (spotlight) {
-    const panels = Array.from(spotlight.querySelectorAll('.event-panel'));
-    let idx = Math.max(0, panels.findIndex((p) => p.classList.contains('active')));
-    let timer = null;
-    const setActive = (i) => {
-      idx = i;
-      panels.forEach((p, j) => p.classList.toggle('active', j === i));
-    };
-    const start = () => {
-      stop();
-      timer = setInterval(() => setActive((idx + 1) % panels.length), 3200);
-    };
-    const stop = () => {
-      if (timer) clearInterval(timer);
-      timer = null;
-    };
-    panels.forEach((p, i) => {
-      p.addEventListener('mouseenter', () => {
-        stop();
-        setActive(i);
-      });
-      p.addEventListener('click', () => setActive(i));
+  // ----- Events marquee — duplicate cards for a seamless infinite scroll -----
+  const eventsTrack = document.getElementById('events-track');
+  if (eventsTrack && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    eventsTrack.innerHTML += eventsTrack.innerHTML; // second identical copy
+    eventsTrack.querySelectorAll(':scope > *:nth-child(n+8)')
+      .forEach((el) => el.setAttribute('aria-hidden', 'true'));
+  }
+
+  // ----- Mega-menu live preview pane -----
+  const megaFeature = document.getElementById('megaFeature');
+  if (megaFeature) {
+    const featImg = document.getElementById('featImg');
+    const featTag = document.getElementById('featTag');
+    const featTitle = document.getElementById('featTitle');
+    const featDesc = document.getElementById('featDesc');
+    const featCta = document.getElementById('featCta');
+    const def = { ...megaFeature.dataset };
+    const links = Array.from(document.querySelectorAll('.dropdown-mega-col a[data-img]'));
+
+    [def.defaultImg, ...links.map((a) => a.getAttribute('data-img'))].forEach((src) => {
+      if (src) { const i = new Image(); i.src = src; }
     });
-    spotlight.addEventListener('mouseleave', start);
-    start();
+
+    const showImg = (src) => {
+      if (featImg.getAttribute('src') === src) return;
+      featImg.style.opacity = '0';
+      featImg.onload = () => { featImg.style.opacity = '1'; };
+      featImg.src = src;
+      if (featImg.complete) featImg.style.opacity = '1';
+    };
+
+    const preview = (a) => {
+      megaFeature.classList.remove('is-flagship');
+      showImg(a.getAttribute('data-img'));
+      featTag.innerHTML = 'In our lineup';
+      featTitle.textContent = a.textContent.trim();
+      featDesc.textContent = a.getAttribute('data-desc') || '';
+      featCta.innerHTML = 'View booth <span>→</span>';
+      megaFeature.setAttribute('href', a.getAttribute('href'));
+    };
+
+    const restore = () => {
+      megaFeature.classList.add('is-flagship');
+      showImg(def.defaultImg);
+      featTag.innerHTML = '<span class="feat-dot"></span> ' + (def.defaultTag || '').replace(/^✨\s*/, '');
+      featTitle.textContent = def.defaultTitle || '';
+      featDesc.textContent = def.defaultDesc || '';
+      featCta.innerHTML = (def.defaultCta || 'Explore') + ' <span>→</span>';
+      megaFeature.setAttribute('href', def.defaultHref || '#');
+    };
+
+    let resetTimer = null;
+    links.forEach((a) => {
+      a.addEventListener('mouseenter', () => { clearTimeout(resetTimer); preview(a); });
+    });
+    const mega = megaFeature.closest('.dropdown-mega');
+    if (mega) {
+      mega.addEventListener('mouseleave', () => { resetTimer = setTimeout(restore, 120); });
+      mega.addEventListener('mouseenter', () => clearTimeout(resetTimer));
+    }
+  }
+
+  // ----- Mobile drawer (hamburger menu) -----
+  const burger = document.getElementById('navBurger');
+  const drawer = document.getElementById('mobileDrawer');
+  if (burger && drawer) {
+    const closeBtn = document.getElementById('mdClose');
+    const backdrop = document.getElementById('mdBackdrop');
+    let closeTimer = null;
+    const openDrawer = () => {
+      clearTimeout(closeTimer);
+      drawer.classList.add('show');   // display:block — layer exists only while open
+      void drawer.offsetWidth;        // reflow so the slide-in transition runs
+      drawer.classList.add('open');
+      document.body.classList.add('drawer-open');
+      burger.setAttribute('aria-expanded', 'true');
+      drawer.setAttribute('aria-hidden', 'false');
+    };
+    const closeDrawer = () => {
+      drawer.classList.remove('open');
+      document.body.classList.remove('drawer-open');
+      burger.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+      closeTimer = setTimeout(() => {
+        if (!drawer.classList.contains('open')) drawer.classList.remove('show');
+      }, 420);
+    };
+    burger.addEventListener('click', openDrawer);
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (backdrop) backdrop.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
+    drawer.querySelectorAll('.md-acc-head').forEach((head) => {
+      head.addEventListener('click', () => {
+        const acc = head.parentElement;
+        const isOpen = acc.classList.toggle('open');
+        head.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    });
+    drawer.querySelectorAll('a[href]').forEach((a) => {
+      a.addEventListener('click', closeDrawer);
+    });
   }
 
   // ----- Stats band count-up animation -----
