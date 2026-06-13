@@ -1364,8 +1364,14 @@ a.fcb-item:hover{color:var(--brand-blue-light)}
     background:transparent;border:none;cursor:pointer;transition:background .2s ease;
   }
   .md-link:active,.md-acc-head:active,.md-link:hover,.md-acc-head:hover{background:rgba(26,115,214,0.16)}
-  .md-ai{color:#fff;background:linear-gradient(135deg,#084f99,#1a73d6);margin:4px 0}
-  .md-ai .ai-icon{width:17px;height:17px;fill:#fff}
+  .md-ai{
+    position:relative;overflow:visible;background:transparent;color:#fff;
+    border-radius:12px;margin:6px 0;
+    animation:aiPulse 6s ease-in-out infinite;
+  }
+  .md-ai:hover,.md-ai:active{background:rgba(26,115,214,0.16)}
+  .md-ai .ai-icon{width:17px;height:17px;fill:#7eb2ff}
+  .md-ai .ai-orbit{offset-path:inset(0 round 12px)}
   .md-acc-head{justify-content:space-between}
   .md-chev{font-size:12px;color:var(--text-2);transition:transform .25s ease,color .2s ease}
   .md-acc.open .md-acc-head{color:#fff;background:rgba(26,115,214,0.12)}
