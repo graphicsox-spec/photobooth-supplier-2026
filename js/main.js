@@ -17,14 +17,30 @@
         el.outerHTML = html;
       } catch (err) {
         // Fallback for file:// viewing where fetch() is blocked (js/includes.js)
-        if (window.SITE_INCLUDES && window.SITE_INCLUDES[url]) {
-          el.outerHTML = window.SITE_INCLUDES[url];
+        const key = url.replace(/^(\.\.\/)+/, ''); // sub-dir pages use ../includes/...
+        const html = window.SITE_INCLUDES && (window.SITE_INCLUDES[url] || window.SITE_INCLUDES[key]);
+        if (html) {
+          el.outerHTML = html;
         } else {
           console.error('Failed to load include:', el, err);
         }
       }
     })
   );
+
+  // ----- Adjust shared-include relative paths for pages in a sub-directory -----
+  const siteBase = window.SITE_BASE || '';
+  if (siteBase) {
+    const fixAttr = (node, attr) => {
+      const v = node.getAttribute(attr);
+      if (v && !/^(https?:|tel:|mailto:|#|\/|data:)/i.test(v)) node.setAttribute(attr, siteBase + v);
+    };
+    document.querySelectorAll('.nav a[href], .mobile-drawer a[href], footer a[href]').forEach((n) => fixAttr(n, 'href'));
+    document.querySelectorAll('.nav img[src], .mobile-drawer img[src], footer img[src]').forEach((n) => fixAttr(n, 'src'));
+    document.querySelectorAll('.nav [data-img], .mobile-drawer [data-img], #megaFeature[data-default-img]').forEach((n) => {
+      fixAttr(n, 'data-img'); fixAttr(n, 'data-default-img');
+    });
+  }
 
   // ----- Transparent nav at top → solid after scroll -----
   const nav = document.querySelector('.nav');

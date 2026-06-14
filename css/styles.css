@@ -258,7 +258,7 @@ img,svg{max-width:100%;display:block}
 .dropdown-mega-feature:hover .feat-cta{gap:10px}
 .dropdown-simple a{
   display:block;padding:8px 12px;border-radius:8px;
-  font-size:14px;color:var(--text-2);transition:all .15s;
+  font-size:14px;color:var(--text-2);transition:all .15s;white-space:nowrap;
 }
 .dropdown-simple a:hover{background:rgba(255,255,255,0.05);color:var(--text)}
 
