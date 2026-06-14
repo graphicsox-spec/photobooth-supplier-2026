@@ -205,6 +205,17 @@
     });
   }
 
+  // ----- Print template 3D tilt -----
+  document.querySelectorAll('.print3d').forEach((el) => {
+    el.addEventListener('mousemove', (e) => {
+      const r = el.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      el.style.transform = `rotateY(${px * 18}deg) rotateX(${-py * 18}deg) scale(1.07)`;
+    });
+    el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+  });
+
   // ----- Stats band count-up animation -----
   const counters = document.querySelectorAll('.count[data-count]');
   if (counters.length) {
