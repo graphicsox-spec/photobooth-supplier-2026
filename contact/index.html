@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact Us — Request a Free Quote | Photo Booth Supplier</title>
+<meta name="description" content="Get a free, no-obligation photo booth quote in 24 hours. Call 800-567-1676 or send us your event details. Serving weddings, corporate events, mitzvahs & parties across all six New England states." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://www.photoboothsupplier.com/contact/">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<div data-include="../includes/header.html"></div>
+
+<!-- ===== HERO ===== -->
+<header class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Let's Talk</span>
+    <h1>Tell us about your <span class="serif gradient-text">big day.</span></h1>
+    <p class="lead">Fill in a few details and we'll send a custom quote within 24 hours — booth recommendations, availability for your date, and honest pricing. No pressure, no spam. Just smiles.</p>
+  </div>
+</header>
+
+<!-- ===== CONTACT GRID ===== -->
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- FORM -->
+      <div class="contact-form-card">
+        <div class="cf-head">
+          <h2>Request your free quote</h2>
+          <p>Takes about 60 seconds. The more you share, the better we can match the perfect booth to your event.</p>
+        </div>
+
+        <!--
+          ============================================================
+          DEPLOYMENT NOTE — making this form actually send emails:
+          1. Create a free account at https://formspree.io
+          2. Make a new form and copy your form ID (looks like: xyzabcd)
+          3. Replace YOUR_FORM_ID in the action URL below.
+          That's it — submissions will arrive at your inbox.
+          (You can also swap in Web3Forms, Getform, or any endpoint.)
+          ============================================================
+        -->
+        <form id="quoteForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+          <div class="cf-grid">
+            <div class="cf-field">
+              <label for="name">Full name <span class="req">*</span></label>
+              <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+            </div>
+            <div class="cf-field">
+              <label for="email">Email <span class="req">*</span></label>
+              <input type="email" id="email" name="email" placeholder="jane@email.com" required>
+            </div>
+            <div class="cf-field">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="(800) 567-1676">
+            </div>
+            <div class="cf-field">
+              <label for="eventType">Event type <span class="req">*</span></label>
+              <select id="eventType" name="event_type" required>
+                <option value="" selected disabled>Select one…</option>
+                <option>Wedding</option>
+                <option>Corporate Event</option>
+                <option>Brand Activation</option>
+                <option>Mitzvah (Bar / Bat)</option>
+                <option>College / School</option>
+                <option>Holiday Party</option>
+                <option>Birthday / Sweet 16</option>
+                <option>Private / Social</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="cf-field">
+              <label for="eventDateBtn">Event date</label>
+              <div class="cdate">
+                <button type="button" class="cdate-btn" id="eventDateBtn" aria-haspopup="dialog" aria-expanded="false">
+                  <span class="cdate-val placeholder">dd-mm-yyyy</span>
+                  <svg class="cdate-ic" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+                </button>
+                <input type="hidden" name="event_date" value="">
+                <div class="cdate-pop" role="dialog" aria-label="Choose event date"></div>
+              </div>
+            </div>
+            <div class="cf-field">
+              <label for="location">Event location</label>
+              <input type="text" id="location" name="location" placeholder="City, State (e.g. Boston, MA)">
+            </div>
+            <div class="cf-field">
+              <label for="booth">Booth you're interested in</label>
+              <select id="booth" name="booth_interest">
+                <option value="" selected disabled>Not sure yet — recommend one</option>
+                <option>AI Photo Booth</option>
+                <option>360 Slow Motion Booth</option>
+                <option>Glam Photo Booth</option>
+                <option>Selfie / Giant Mirror Booth</option>
+                <option>Open Air Photo Booth</option>
+                <option>Social Roamer</option>
+                <option>Flipbooks</option>
+                <option>Multiple booths</option>
+              </select>
+            </div>
+            <div class="cf-field">
+              <label for="guests">Approx. guest count</label>
+              <input type="text" id="guests" name="guest_count" placeholder="e.g. 150">
+            </div>
+            <div class="cf-field full">
+              <label for="message">Anything else we should know?</label>
+              <textarea id="message" name="message" placeholder="Tell us about your theme, venue, timing, branding needs, or any questions you have…"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary cf-submit">
+            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor"/></svg>
+            Send my request
+          </button>
+          <p class="cf-note">We reply within 24 hours (usually much faster). Your details are never shared.</p>
+          <div class="cf-status" id="formStatus" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+
+      <!-- ASIDE -->
+      <aside class="contact-aside">
+        <a href="tel:8005671676" class="info-card">
+          <span class="info-ic">
+            <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+          </span>
+          <div>
+            <h4>Call or text</h4>
+            <div class="big">800-567-1676</div>
+            <div class="sub">Fastest way to check your date</div>
+          </div>
+        </a>
+
+        <a href="mailto:photoboothsupplier@gmail.com" class="info-card">
+          <span class="info-ic">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </span>
+          <div>
+            <h4>Email us</h4>
+            <div class="big">photoboothsupplier@gmail.com</div>
+            <div class="sub">Send over your event brief anytime</div>
+          </div>
+        </a>
+
+        <div class="info-card">
+          <span class="info-ic">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+          </span>
+          <div>
+            <h4>Service area</h4>
+            <div class="big">All of New England</div>
+            <div class="sub">MA · RI · CT · NH · VT · ME — we come to you</div>
+          </div>
+        </div>
+
+        <div class="hours-card">
+          <h4>
+            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+            Office hours
+          </h4>
+          <div class="hours-row"><span>Monday – Friday</span><span>9:00 AM – 7:00 PM</span></div>
+          <div class="hours-row"><span>Saturday</span><span>10:00 AM – 5:00 PM</span></div>
+          <div class="hours-row closed"><span>Sunday</span><span>By appointment</span></div>
+          <div class="hours-row"><span>Events run</span><span>7 days a week</span></div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAP / SERVICE AREA ===== -->
+<section class="map-section">
+  <div class="container">
+    <div class="section-head" style="text-align:center;margin-bottom:30px">
+      <span class="eyebrow">Where We Work</span>
+      <h2 class="section-title">Proudly serving <span class="serif">all six</span> New England states</h2>
+    </div>
+    <div class="map-wrap">
+      <iframe
+        title="Photo Booth Supplier service area — New England"
+        src="https://www.google.com/maps?q=New%20England%2C%20USA&output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="map-states">
+      <span class="map-state"><span class="dot"></span> Massachusetts</span>
+      <span class="map-state"><span class="dot"></span> Rhode Island</span>
+      <span class="map-state"><span class="dot"></span> Connecticut</span>
+      <span class="map-state"><span class="dot"></span> New Hampshire</span>
+      <span class="map-state"><span class="dot"></span> Vermont</span>
+      <span class="map-state"><span class="dot"></span> Maine</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="all-booths-section" style="padding:20px 0 80px">
+  <div class="container">
+    <div class="section-head" style="text-align:center;margin-bottom:8px">
+      <span class="eyebrow">Good To Know</span>
+      <h2 class="section-title">Questions before you <span class="serif">book?</span></h2>
+    </div>
+    <div class="faq">
+      <div class="faq-col">
+        <div class="faq-item"><button class="faq-q" type="button">How far in advance should I book?<span class="faq-ic">+</span></button><div class="faq-a"><p>The earlier the better — popular dates (especially weekends in spring and fall) fill up months ahead. That said, we'll always do our best to accommodate last-minute requests, so reach out even if your event is soon.</p></div></div>
+        <div class="faq-item"><button class="faq-q" type="button">How fast will I hear back?<span class="faq-ic">+</span></button><div class="faq-a"><p>We reply to every quote request within 24 hours, and usually much sooner during business hours. Need an answer right now? Call or text 800-567-1676.</p></div></div>
+        <div class="faq-item"><button class="faq-q" type="button">Is an attendant included?<span class="faq-ic">+</span></button><div class="faq-a"><p>Yes — a friendly, professional attendant is included with every booth. They handle setup, run the booth all night, help your guests, and pack everything up afterward.</p></div></div>
+        <div class="faq-item"><button class="faq-q" type="button">Do you travel to my venue?<span class="faq-ic">+</span></button><div class="faq-a"><p>We do. We serve all six New England states and bring everything we need to your venue — booth, props, lighting, prints, and setup.</p></div></div>
+      </div>
+      <div class="faq-col">
+        <div class="faq-item"><button class="faq-q" type="button">What's included in a quote?<span class="faq-ic">+</span></button><div class="faq-a"><p>Your custom quote covers the booth, attendant, setup and breakdown, unlimited sessions during your rental, props, custom-designed prints, and digital sharing. We'll tailor it to your event and flag any add-ons.</p></div></div>
+        <div class="faq-item"><button class="faq-q" type="button">Can you brand the booth and prints?<span class="faq-ic">+</span></button><div class="faq-a"><p>Absolutely. We design custom print templates to match your theme or logo, and can fully wrap the booth for branded corporate activations.</p></div></div>
+        <div class="faq-item"><button class="faq-q" type="button">Can I add uplighting, backdrops, or dance floors?<span class="faq-ic">+</span></button><div class="faq-a"><p>Yes — we offer uplighting, custom backdrops, branded print templates, and dance floors as add-ons. Mention what you'd like in the form and we'll bundle it into one seamless setup.</p></div></div>
+        <div class="faq-item"><button class="faq-q" type="button">How do I lock in my date?<span class="faq-ic">+</span></button><div class="faq-a"><p>Send your request, we'll confirm availability and send your quote, and a deposit reserves your date. Simple and quick — we'll guide you through every step.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box">
+      <h2>Prefer to just <span class="serif">talk it through?</span></h2>
+      <p>Give us a call — we love helping you picture exactly how your event will come to life.</p>
+      <div class="btn-row">
+        <a href="tel:8005671676" class="btn btn-light">
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+          800-567-1676
+        </a>
+        <a href="../our-booths/index.html" class="btn btn-ghost" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.3);color:#fff">
+          Browse all 30+ booths
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div data-include="../includes/footer.html"></div>
+
+<script>window.SITE_BASE='../';</script>
+<script src="../js/includes.js"></script>
+<script src="../js/main.js"></script>
+
+<!-- Contact page: custom controls + FAQ accordion + form handling -->
+<script>
+(function(){
+  // ===== Custom themed form controls (selects + date picker) =====
+  function closeAll(except){
+    document.querySelectorAll('.csel.open,.cdate.open').forEach(function(el){
+      if(el !== except && el._close) el._close();
+    });
+  }
+
+  // ---- Custom select ----
+  function buildSelect(sel){
+    if(sel.dataset.enhanced) return;
+    sel.dataset.enhanced = '1';
+    var wrap = document.createElement('div'); wrap.className = 'csel';
+    sel.parentNode.insertBefore(wrap, sel);
+    wrap.appendChild(sel);
+    sel.classList.add('csel-native'); sel.setAttribute('tabindex','-1'); sel.setAttribute('aria-hidden','true');
+    // A visually-hidden required <select> can block submit in some browsers.
+    // Track required ourselves and validate manually on submit.
+    if(sel.hasAttribute('required')){ sel.dataset.required = '1'; sel.removeAttribute('required'); }
+
+    var btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'csel-btn';
+    btn.innerHTML = '<span class="csel-label"></span><svg class="csel-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>';
+    wrap.appendChild(btn);
+    var lab = btn.querySelector('.csel-label');
+
+    var menu = document.createElement('div'); menu.className = 'csel-menu'; menu.setAttribute('role','listbox');
+    wrap.appendChild(menu);
+
+    var opts = Array.prototype.slice.call(sel.options);
+    var placeholder = '';
+    opts.forEach(function(o){ if(o.disabled && o.value === '') placeholder = o.text; });
+
+    function refreshLabel(){
+      var o = sel.options[sel.selectedIndex];
+      if(!o || (o.disabled && o.value === '')){ lab.textContent = placeholder || 'Select…'; lab.classList.add('placeholder'); }
+      else { lab.textContent = o.text; lab.classList.remove('placeholder'); }
+    }
+
+    opts.forEach(function(o, i){
+      if(o.disabled && o.value === '') return; // skip placeholder from list
+      var d = document.createElement('div');
+      d.className = 'csel-opt'; d.textContent = o.text; d.setAttribute('role','option');
+      if(i === sel.selectedIndex) d.classList.add('selected');
+      d.addEventListener('click', function(e){
+        e.stopPropagation();
+        sel.selectedIndex = i;
+        sel.dispatchEvent(new Event('change', {bubbles:true}));
+        menu.querySelectorAll('.csel-opt').forEach(function(x){ x.classList.remove('selected'); });
+        d.classList.add('selected');
+        wrap.classList.remove('invalid');
+        refreshLabel(); close();
+      });
+      menu.appendChild(d);
+    });
+    refreshLabel();
+
+    function open(){ closeAll(wrap); wrap.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+    function close(){ wrap.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+    wrap._close = close;
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      wrap.classList.contains('open') ? close() : open();
+    });
+  }
+
+  // ---- Custom date picker ----
+  function buildDate(root){
+    var hidden = root.querySelector('input[type=hidden]');
+    var btn = root.querySelector('.cdate-btn');
+    var val = root.querySelector('.cdate-val');
+    var pop = root.querySelector('.cdate-pop');
+    var view = new Date(); view.setDate(1); view.setHours(0,0,0,0);
+    var selected = null;
+    var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var dows = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+    var p2 = function(n){ return ('0'+n).slice(-2); };
+    var fmt = function(d){ return p2(d.getDate())+'-'+p2(d.getMonth()+1)+'-'+d.getFullYear(); };
+    var iso = function(d){ return d.getFullYear()+'-'+p2(d.getMonth()+1)+'-'+p2(d.getDate()); };
+
+    function render(){
+      var y = view.getFullYear(), m = view.getMonth();
+      var startDow = new Date(y, m, 1).getDay();
+      var daysInMonth = new Date(y, m+1, 0).getDate();
+      var prevDays = new Date(y, m, 0).getDate();
+      var today = new Date(); today.setHours(0,0,0,0);
+      var h = '<div class="cdate-head"><div class="cdate-title">'+months[m]+' '+y+'</div>'
+        + '<div class="cdate-nav"><button type="button" data-nav="-1" aria-label="Previous month">&#8249;</button>'
+        + '<button type="button" data-nav="1" aria-label="Next month">&#8250;</button></div></div>';
+      h += '<div class="cdate-grid">';
+      dows.forEach(function(d){ h += '<div class="cdate-dow">'+d+'</div>'; });
+      for(var i = startDow-1; i >= 0; i--){ h += '<button type="button" class="cdate-day muted" disabled>'+(prevDays-i)+'</button>'; }
+      for(var dnum = 1; dnum <= daysInMonth; dnum++){
+        var cur = new Date(y, m, dnum); cur.setHours(0,0,0,0);
+        var cls = 'cdate-day';
+        if(cur.getTime() === today.getTime()) cls += ' today';
+        if(selected && cur.getTime() === selected.getTime()) cls += ' selected';
+        h += '<button type="button" class="'+cls+'" data-day="'+dnum+'">'+dnum+'</button>';
+      }
+      h += '</div>';
+      h += '<div class="cdate-foot"><button type="button" data-act="clear">Clear</button><button type="button" data-act="today">Today</button></div>';
+      pop.innerHTML = h;
+    }
+    function open(){ closeAll(root); render(); root.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+    function close(){ root.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+    root._close = close;
+
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      root.classList.contains('open') ? close() : open();
+    });
+    pop.addEventListener('click', function(e){
+      e.stopPropagation();
+      var nav = e.target.closest('[data-nav]');
+      if(nav){ view.setMonth(view.getMonth() + parseInt(nav.dataset.nav, 10)); render(); return; }
+      var act = e.target.closest('[data-act]');
+      if(act){
+        if(act.dataset.act === 'clear'){ selected = null; hidden.value = ''; val.textContent = 'dd-mm-yyyy'; val.classList.add('placeholder'); close(); }
+        else { var t = new Date(); t.setHours(0,0,0,0); selected = t; view = new Date(t.getFullYear(), t.getMonth(), 1); hidden.value = iso(t); val.textContent = fmt(t); val.classList.remove('placeholder'); render(); }
+        return;
+      }
+      var day = e.target.closest('[data-day]');
+      if(day && !day.disabled){
+        var d = new Date(view.getFullYear(), view.getMonth(), parseInt(day.dataset.day, 10)); d.setHours(0,0,0,0);
+        selected = d; hidden.value = iso(d); val.textContent = fmt(d); val.classList.remove('placeholder'); close();
+      }
+    });
+  }
+
+  document.querySelectorAll('#quoteForm select').forEach(buildSelect);
+  document.querySelectorAll('.cdate').forEach(buildDate);
+  document.addEventListener('click', function(){ closeAll(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeAll(); });
+
+  // ===== FAQ accordion =====
+  document.querySelectorAll('.faq-q').forEach(function(q){
+    q.addEventListener('click', function(){
+      q.parentElement.classList.toggle('open');
+    });
+  });
+
+  // Form: AJAX submit to Formspree (graceful fallback to normal POST)
+  var form = document.getElementById('quoteForm');
+  var status = document.getElementById('formStatus');
+
+  // Validate native fields + our custom required selects.
+  function validate(){
+    // Clear prior custom-select error states
+    form.querySelectorAll('.csel.invalid').forEach(function(w){ w.classList.remove('invalid'); });
+    var firstBad = null;
+    form.querySelectorAll('select[data-required]').forEach(function(s){
+      var o = s.options[s.selectedIndex];
+      if(!o || o.value === ''){ s.closest('.csel').classList.add('invalid'); if(!firstBad) firstBad = s.closest('.csel'); }
+    });
+    // Native inputs (name, email, etc.)
+    var nativeOk = form.reportValidity();
+    if(firstBad){
+      status.className = 'cf-status err';
+      status.textContent = 'Please choose an event type so we can match the right booth.';
+      firstBad.scrollIntoView({behavior:'smooth', block:'center'});
+      return false;
+    }
+    return nativeOk;
+  }
+
+  if (form) {
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(!validate()) return;
+      // If endpoint not configured yet, let the user know cleanly.
+      if (form.action.indexOf('YOUR_FORM_ID') !== -1) {
+        status.className = 'cf-status err';
+        status.textContent = 'Form endpoint not set up yet. Add your Formspree form ID in the page source (see the comment above the form), or call us at 800-567-1676.';
+        return;
+      }
+      var btn = form.querySelector('.cf-submit');
+      var original = btn.innerHTML;
+      btn.disabled = true; btn.innerHTML = 'Sending…';
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function(res){
+        if (res.ok) {
+          form.reset();
+          status.className = 'cf-status ok';
+          status.textContent = 'Thank you! Your request is in — we’ll be in touch within 24 hours.';
+        } else {
+          status.className = 'cf-status err';
+          status.textContent = 'Something went wrong. Please email photoboothsupplier@gmail.com or call 800-567-1676.';
+        }
+      }).catch(function(){
+        status.className = 'cf-status err';
+        status.textContent = 'Network error. Please email photoboothsupplier@gmail.com or call 800-567-1676.';
+      }).finally(function(){
+        btn.disabled = false; btn.innerHTML = original;
+      });
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
