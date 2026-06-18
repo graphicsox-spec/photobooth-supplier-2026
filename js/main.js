@@ -51,11 +51,28 @@
   }
 
   // ----- Mark current page in navigation (active state) -----
-  const path = location.pathname.split('/').pop() || 'index.html';
-  if (path === 'ai-studio.html') {
-    const aiLink = document.querySelector('.ai-link');
-    if (aiLink) aiLink.classList.add('active');
-  }
+  (function () {
+    const p = location.pathname;
+    // Map URL pattern → keyword in the top-level nav <a href>
+    const map = [
+      [/\/our-booths\//,                                                    'our-booths'],
+      [/ai-studio/,                                                          'ai-studio'],
+      [/\/events\//,                                                         'events'],
+      [/\/gallery\//,                                                        'gallery'],
+      [/\/contact\//,                                                        'contact'],
+      [/\/(uplighting|dance-floors|choose-your-backdrop|branded-print-templates)\//, 'addons'],
+    ];
+    let hint = '';
+    for (const [re, key] of map) { if (re.test(p)) { hint = key; break; } }
+    if (!hint) return;
+    document.querySelectorAll('.nav-links > li > a').forEach(a => {
+      const href = a.getAttribute('href') || '';
+      const text = a.textContent.toLowerCase();
+      if (href.includes(hint) || (hint === 'addons' && text.includes('add'))) {
+        a.classList.add('nav-active');
+      }
+    });
+  })();
 
   // ----- Subtle parallax effect on hero orb -----
   const orb = document.querySelector('.hero-orb, .hero-orb-ai');
