@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Events We Serve — Photo Booth Supplier New England</title>
+<meta name="description" content="Photo booths for every occasion — weddings, corporate events, colleges, holiday parties, Bar & Bat Mitzvah, private parties, and DJ/planner packages across New England." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<style>
+/* ============================================================
+   EVENTS PAGE — Supplemental Styles
+   All colors reference the master --var tokens from styles.css
+   ============================================================ */
+
+/* ── Hero override ─────────────────────────────────────────── */
+.ev-page-hero {
+  position: relative;
+  padding: 150px 0 0;
+  overflow: hidden;
+}
+.ev-page-hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: var(--gradient-mesh);
+  pointer-events: none;
+}
+.ev-page-hero .container { position: relative; z-index: 1; }
+.ev-page-hero .eyebrow { margin-bottom: 20px; }
+.ev-page-hero h1 {
+  font-size: clamp(44px, 6vw, 82px);
+  line-height: 0.97; letter-spacing: -0.04em; font-weight: 800;
+  margin-bottom: 22px;
+}
+.ev-page-hero .lead {
+  font-size: 18px; color: var(--text-2); line-height: 1.65;
+  max-width: 600px; margin-bottom: 52px;
+}
+
+/* ── Hero event-type card grid ─────────────────────────────── */
+.ev-hero-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 300px 300px;
+  gap: 16px;
+}
+.ev-hero-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color .4s ease, box-shadow .4s ease;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  text-decoration: none;
+}
+.ev-hero-card::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 28%, rgba(0,0,0,0.5) 62%, rgba(0,0,0,0.92) 100%);
+  pointer-events: none;
+}
+.ev-hero-card:hover { border-color: rgba(26,115,214,0.5); box-shadow: 0 26px 60px -16px rgba(0,0,0,0.7); }
+
+.ev-hero-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  filter: saturate(0.82) brightness(0.72);
+  transition: transform .7s ease, filter .5s ease;
+}
+.ev-hero-card:hover .ev-hero-bg {
+  transform: scale(1.06);
+  filter: saturate(1.05) brightness(0.88);
+}
+
+/* Gradient fallback colors per event type */
+.ev-hero-card.c-wedding  .ev-hero-bg { background-color: #3d1520; }
+.ev-hero-card.c-corp     .ev-hero-bg { background-color: #041633; }
+.ev-hero-card.c-college  .ev-hero-bg { background-color: #1d0d3f; }
+.ev-hero-card.c-holiday  .ev-hero-bg { background-color: #3d2500; }
+.ev-hero-card.c-mitzvah  .ev-hero-bg { background-color: #1d083a; }
+.ev-hero-card.c-private  .ev-hero-bg { background-color: #003d38; }
+.ev-hero-card.c-planner  .ev-hero-bg { background-color: #041a3d; }
+
+/* Serif italic event number */
+.ev-card-num {
+  position: absolute; top: 18px; left: 22px; z-index: 2;
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-size: 28px; color: rgba(255,255,255,0.25);
+}
+/* Small accent top-bar per event type */
+.ev-hero-card::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  z-index: 3; opacity: 0; transition: opacity .35s;
+}
+.ev-hero-card:hover::before { opacity: 1; }
+.ev-hero-card.c-wedding::before  { background: linear-gradient(90deg, #ff4d6d, #ffd166); }
+.ev-hero-card.c-corp::before     { background: linear-gradient(90deg, #084f99, #1a73d6); }
+.ev-hero-card.c-college::before  { background: linear-gradient(90deg, #7c5cff, #ff4d6d); }
+.ev-hero-card.c-holiday::before  { background: linear-gradient(90deg, #ffd166, #ff4d6d); }
+.ev-hero-card.c-mitzvah::before  { background: linear-gradient(90deg, #7c5cff, #ffd166); }
+.ev-hero-card.c-private::before  { background: linear-gradient(90deg, #00e0c7, #1a73d6); }
+.ev-hero-card.c-planner::before  { background: linear-gradient(90deg, #1a73d6, #7c5cff); }
+
+.ev-card-info {
+  position: relative; z-index: 2;
+  padding: 0 22px 22px;
+}
+.ev-card-name {
+  font-size: 19px; font-weight: 700; color: #fff;
+  letter-spacing: -0.02em; margin-bottom: 3px;
+}
+.ev-card-meta { font-size: 12.5px; color: rgba(255,255,255,0.65); }
+.ev-card-arrow {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 10px; font-size: 12px; font-weight: 700;
+  color: var(--brand-blue-light);
+  opacity: 0; transform: translateX(-10px);
+  transition: opacity .3s, transform .3s;
+}
+.ev-hero-card:hover .ev-card-arrow { opacity: 1; transform: translateX(0); }
+
+/* Featured (wide) cards */
+.ev-hero-card.wide { grid-column: span 2; }
+.ev-hero-card.wide .ev-card-name { font-size: 24px; }
+.ev-hero-card.wide .ev-card-meta { font-size: 13.5px; }
+
+/* ── Sticky quick-jump nav ─────────────────────────────────── */
+.ev-jump-nav {
+  position: sticky; top: 91px; z-index: 40;
+  background: rgba(10,13,20,0.96);
+  border-bottom: 1px solid var(--border);
+  padding: 13px 0;
+  backdrop-filter: blur(18px);
+}
+.ev-jump-inner {
+  display: flex; gap: 8px; align-items: center;
+  overflow-x: auto; scrollbar-width: none;
+  padding: 2px 4px;
+}
+.ev-jump-inner::-webkit-scrollbar { display: none; }
+.ev-jump-label {
+  font-size: 10.5px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.14em; color: var(--text-3); white-space: nowrap;
+  padding-right: 10px;
+  border-right: 1px solid var(--border-2); margin-right: 4px;
+  flex-shrink: 0;
+}
+.ev-jump-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 15px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--border);
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+  white-space: nowrap; text-decoration: none;
+  transition: all .2s; flex-shrink: 0;
+}
+.ev-jump-pill .dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: currentColor; opacity: 0.45; flex-shrink: 0;
+}
+.ev-jump-pill:hover {
+  background: rgba(26,115,214,0.16);
+  border-color: rgba(26,115,214,0.4);
+  color: var(--text);
+}
+.ev-jump-pill.active {
+  background: var(--brand-blue); color: #fff;
+  border-color: var(--brand-blue);
+  box-shadow: 0 4px 16px -4px rgba(8,79,153,0.55);
+}
+.ev-jump-pill.active .dot { opacity: 1; }
+
+/* ── Spotlight sections (one per event type) ───────────────── */
+.ev-spotlight { padding: 100px 0; position: relative; overflow: hidden; scroll-margin-top: 120px; }
+
+/* Per-type accent stripe at top */
+.ev-spotlight::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+}
+.ev-wedding::before   { background: linear-gradient(90deg, #ff4d6d, #ffd166); }
+.ev-corp::before      { background: linear-gradient(90deg, #084f99, #1a73d6); }
+.ev-college::before   { background: linear-gradient(90deg, #7c5cff, #ff4d6d); }
+.ev-holiday::before   { background: linear-gradient(90deg, #ffd166, #ff4d6d); }
+.ev-mitzvah::before   { background: linear-gradient(90deg, #7c5cff, #ffd166); }
+.ev-private::before   { background: linear-gradient(90deg, #00e0c7, #1a73d6); }
+.ev-planner::before   { background: linear-gradient(90deg, #1a73d6, #7c5cff); }
+
+.ev-split {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+  align-items: center;
+}
+.ev-spotlight.flip .ev-split { direction: rtl; }
+.ev-spotlight.flip .ev-split > * { direction: ltr; }
+
+/* Image side */
+.ev-img-side { position: relative; }
+.ev-img-frame {
+  position: relative; border-radius: var(--radius-lg);
+  overflow: hidden; aspect-ratio: 4/3;
+  box-shadow: 0 32px 80px -20px rgba(0,0,0,0.65);
+  border: 1px solid var(--border-2);
+}
+.ev-img-frame img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .8s ease;
+}
+.ev-spotlight:hover .ev-img-frame img { transform: scale(1.04); }
+
+/* Floating tag on image */
+.ev-img-badge {
+  position: absolute; bottom: 20px; left: 20px;
+  background: rgba(8,11,18,0.78); backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff; padding: 12px 18px; border-radius: 14px;
+  font-size: 13px; font-weight: 600; line-height: 1.4;
+}
+.ev-img-badge strong {
+  display: block; font-size: 10px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 2px;
+}
+/* type-colored badge label */
+.ev-wedding  .ev-img-badge strong { color: #ff6b8a; }
+.ev-corp     .ev-img-badge strong { color: var(--brand-blue-light); }
+.ev-college  .ev-img-badge strong { color: #a78bfa; }
+.ev-holiday  .ev-img-badge strong { color: #ffd166; }
+.ev-mitzvah  .ev-img-badge strong { color: #c4b5fd; }
+.ev-private  .ev-img-badge strong { color: #00e0c7; }
+.ev-planner  .ev-img-badge strong { color: #60a5fa; }
+
+.ev-img-pill {
+  position: absolute; top: 16px; right: 16px;
+  background: rgba(8,11,18,0.65); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.9); padding: 6px 14px; border-radius: 999px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.07em;
+}
+
+/* Content side */
+.ev-content { max-width: 540px; }
+.ev-content .eyebrow { margin-bottom: 18px; }
+
+/* Per-type eyebrow tint */
+.ev-wedding  .ev-content .eyebrow { color: #ff6b8a; border-color: rgba(255,77,109,.3); background: rgba(255,77,109,.08); }
+.ev-corp     .ev-content .eyebrow { color: var(--brand-blue-light); border-color: rgba(26,115,214,.3); background: rgba(8,79,153,.08); }
+.ev-college  .ev-content .eyebrow { color: #a78bfa; border-color: rgba(124,92,255,.3); background: rgba(124,92,255,.08); }
+.ev-holiday  .ev-content .eyebrow { color: #ffd166; border-color: rgba(255,209,102,.3); background: rgba(255,209,102,.08); }
+.ev-mitzvah  .ev-content .eyebrow { color: #c4b5fd; border-color: rgba(124,92,255,.3); background: rgba(124,92,255,.08); }
+.ev-private  .ev-content .eyebrow { color: #00e0c7; border-color: rgba(0,224,199,.3); background: rgba(0,224,199,.08); }
+.ev-planner  .ev-content .eyebrow { color: #60a5fa; border-color: rgba(26,115,214,.3); background: rgba(8,79,153,.08); }
+
+.ev-content h2 {
+  font-size: clamp(34px, 3.6vw, 52px);
+  line-height: 1.05; letter-spacing: -0.03em; font-weight: 800;
+  margin-bottom: 18px;
+}
+.ev-content .desc {
+  font-size: 17px; color: var(--text-2); line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+/* Highlight list */
+.ev-highlights { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
+.ev-highlight { display: flex; align-items: flex-start; gap: 14px; }
+.ev-hl-icon {
+  width: 32px; height: 32px; border-radius: 9px;
+  display: grid; place-items: center; flex-shrink: 0; margin-top: 1px;
+}
+.ev-hl-icon svg { width: 17px; height: 17px; fill: #fff; }
+
+/* Per-type icon gradient */
+.ev-wedding  .ev-hl-icon { background: linear-gradient(135deg, #ff4d6d, #ffd166); }
+.ev-corp     .ev-hl-icon { background: var(--gradient-brand); }
+.ev-college  .ev-hl-icon { background: linear-gradient(135deg, #7c5cff, #ff4d6d); }
+.ev-holiday  .ev-hl-icon { background: linear-gradient(135deg, #ffd166, #ff4d6d); }
+.ev-mitzvah  .ev-hl-icon { background: linear-gradient(135deg, #7c5cff, #ffd166); }
+.ev-private  .ev-hl-icon { background: linear-gradient(135deg, #00e0c7, #084f99); }
+.ev-planner  .ev-hl-icon { background: linear-gradient(135deg, #1a73d6, #7c5cff); }
+
+.ev-hl-text { font-size: 14.5px; color: var(--text-2); line-height: 1.55; }
+.ev-hl-text strong { color: var(--text); }
+
+/* Booth chips */
+.ev-booths-label {
+  font-size: 10.5px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--text-3); margin-bottom: 12px;
+}
+.ev-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+.ev-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 15px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--border-2);
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+  text-decoration: none; transition: all .2s;
+}
+.ev-chip:hover {
+  background: rgba(26,115,214,0.14);
+  border-color: rgba(26,115,214,0.45);
+  color: var(--text);
+}
+.ev-chip svg { width: 10px; height: 10px; fill: var(--brand-blue-light); flex-shrink: 0; }
+.ev-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ── "Why choose us" cards ─────────────────────────────────── */
+.why-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.why-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 32px;
+  transition: all .3s;
+}
+.why-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--brand-blue-light);
+  box-shadow: var(--shadow);
+}
+.why-icon {
+  width: 48px; height: 48px; border-radius: 14px;
+  background: var(--gradient-brand); display: grid; place-items: center;
+  margin-bottom: 20px;
+}
+.why-icon svg { width: 24px; height: 24px; fill: #fff; }
+.why-card h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+.why-card p { font-size: 14px; color: var(--text-2); line-height: 1.65; }
+
+/* ── Testimonials ──────────────────────────────────────────── */
+.ev-testimonials-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .ev-hero-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+  .ev-hero-card.wide { grid-column: span 2; min-height: 260px; }
+  .ev-hero-card { min-height: 240px; }
+  .ev-split { grid-template-columns: 1fr; gap: 40px; }
+  .ev-spotlight.flip .ev-split { direction: ltr; }
+  .ev-content { max-width: 100%; }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .ev-testimonials-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .ev-page-hero { padding-top: 110px; }
+  .ev-hero-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 10px;
+  }
+  .ev-hero-card.wide { grid-column: span 2; min-height: 210px; }
+  .ev-hero-card { min-height: 200px; }
+  .ev-card-name { font-size: 16px; }
+  .ev-card-meta { font-size: 11.5px; }
+  .ev-spotlight { padding: 70px 0; }
+  .why-grid { grid-template-columns: 1fr; }
+  .ev-jump-label { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div data-include="../includes/header.html"></div>
+
+<!-- ======================================================
+     HERO
+     ====================================================== -->
+<header class="ev-page-hero">
+  <div class="container">
+    <span class="eyebrow">Colleges · Weddings · Corporate · Mitzvah · Parties</span>
+    <h1>A booth for <span class="serif gradient-text">every occasion.</span></h1>
+    <p class="lead">14 years. 7 event types. 30+ booth styles. Whatever your event — we've done it, and we'll make it unforgettable.</p>
+
+    <!-- 4-col × 2-row event type mosaic -->
+    <div class="ev-hero-grid">
+
+      <!-- Row 1 -->
+      <a href="#ev-weddings" class="ev-hero-card wide c-wedding">
+        <div class="ev-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80')"></div>
+        <span class="ev-card-num">01</span>
+        <div class="ev-card-info">
+          <div class="ev-card-name">Weddings</div>
+          <div class="ev-card-meta">Our most-booked event type · Selfie mirrors, glam, vogue & more</div>
+          <div class="ev-card-arrow">Explore →</div>
+        </div>
+      </a>
+      <a href="#ev-corporate" class="ev-hero-card c-corp">
+        <div class="ev-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80')"></div>
+        <span class="ev-card-num">02</span>
+        <div class="ev-card-info">
+          <div class="ev-card-name">Corporate Events</div>
+          <div class="ev-card-meta">Branded, measurable engagement</div>
+          <div class="ev-card-arrow">Explore →</div>
+        </div>
+      </a>
+      <a href="#ev-colleges" class="ev-hero-card c-college">
+        <div class="ev-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1607013251379-e6eecfffe234?auto=format&fit=crop&w=800&q=80')"></div>
+        <span class="ev-card-num">03</span>
+        <div class="ev-card-info">
+          <div class="ev-card-name">Colleges</div>
+          <div class="ev-card-meta">Homecoming, galas, proms & formals</div>
+          <div class="ev-card-arrow">Explore →</div>
+        </div>
+      </a>
+
+      <!-- Row 2 -->
+      <a href="#ev-holiday" class="ev-hero-card c-holiday">
+        <div class="ev-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&w=800&q=80')"></div>
+        <span class="ev-card-num">04</span>
+        <div class="ev-card-info">
+          <div class="ev-card-name">Holiday Parties</div>
+          <div class="ev-card-meta">Seasonal favorites that sell out fast</div>
+          <div class="ev-card-arrow">Explore →</div>
+        </div>
+      </a>
+      <a href="#ev-mitzvah" class="ev-hero-card c-mitzvah">
+        <div class="ev-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&fit=crop&w=800&q=80')"></div>
+        <span class="ev-card-num">05</span>
+        <div class="ev-card-info">
+          <div class="ev-card-name">Mitzvah</div>
+          <div class="ev-card-meta">Bar & Bat Mitzvah specialists since 2012</div>
+          <div class="ev-card-arrow">Explore →</div>
+        </div>
+      </a>
+      <a href="#ev-private" class="ev-hero-card c-private">
+        <div class="ev-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=800&q=80')"></div>
+        <span class="ev-card-num">06</span>
+        <div class="ev-card-info">
+          <div class="ev-card-name">Private / Social</div>
+          <div class="ev-card-meta">Birthdays, anniversaries & backyard bashes</div>
+          <div class="ev-card-arrow">Explore →</div>
+        </div>
+      </a>
+      <a href="#ev-planners" class="ev-hero-card c-planner">
+        <div class="ev-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1493676304819-0d7a8d026dcf?auto=format&fit=crop&w=800&q=80')"></div>
+        <span class="ev-card-num">07</span>
+        <div class="ev-card-info">
+          <div class="ev-card-name">Planners & DJs</div>
+          <div class="ev-card-meta">Partner with us · Referral program available</div>
+          <div class="ev-card-arrow">Partner →</div>
+        </div>
+      </a>
+
+    </div><!-- /ev-hero-grid -->
+  </div>
+</header>
+
+<!-- ======================================================
+     STICKY QUICK-JUMP NAV
+     ====================================================== -->
+<div class="ev-jump-nav" id="evJumpNav">
+  <div class="container">
+    <div class="ev-jump-inner">
+      <span class="ev-jump-label">Jump to</span>
+      <a href="#ev-weddings"  class="ev-jump-pill"><span class="dot"></span> Weddings</a>
+      <a href="#ev-corporate" class="ev-jump-pill"><span class="dot"></span> Corporate</a>
+      <a href="#ev-colleges"  class="ev-jump-pill"><span class="dot"></span> Colleges</a>
+      <a href="#ev-holiday"   class="ev-jump-pill"><span class="dot"></span> Holiday Parties</a>
+      <a href="#ev-mitzvah"   class="ev-jump-pill"><span class="dot"></span> Mitzvah</a>
+      <a href="#ev-private"   class="ev-jump-pill"><span class="dot"></span> Private / Social</a>
+      <a href="#ev-planners"  class="ev-jump-pill"><span class="dot"></span> Planners & DJs</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ======================================================
+     01 — WEDDINGS
+     ====================================================== -->
+<section class="ev-spotlight ev-wedding" id="ev-weddings" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="ev-split">
+
+      <div class="ev-img-side">
+        <div class="ev-img-frame">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=85" alt="Wedding photo booth" loading="lazy">
+          <div class="ev-img-badge">
+            <strong>Most Requested</strong>
+            Book 6–12 months out
+          </div>
+          <div class="ev-img-pill">★ Top rated</div>
+        </div>
+      </div>
+
+      <div class="ev-content">
+        <span class="eyebrow">Weddings</span>
+        <h2>The booth that makes your <span class="serif">big day unforgettable.</span></h2>
+        <p class="desc">Your wedding guests deserve more than a selfie. Our booths become the centerpiece of your reception — a place to laugh, pose, and make memories that outlast the flowers.</p>
+
+        <div class="ev-highlights">
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+            <div class="ev-hl-text"><strong>Unlimited prints included</strong> — every guest leaves with a custom keepsake strip bearing your names and date</div>
+          </div>
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>
+            <div class="ev-hl-text"><strong>Custom-branded print templates</strong> — your colors, monogram, and design — created by our in-house team</div>
+          </div>
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+            <div class="ev-hl-text"><strong>Professional on-site attendant</strong> — we handle setup, teardown, and keep the experience smooth all night</div>
+          </div>
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg></div>
+            <div class="ev-hl-text"><strong>Instant digital sharing</strong> — guests text or email their photos in seconds; private online gallery delivered next day</div>
+          </div>
+        </div>
+
+        <p class="ev-booths-label">Popular booth choices for weddings</p>
+        <div class="ev-chips">
+          <a href="../our-booths/index.html#booth-selfie-mirror-booth"  class="ev-chip">Selfie Mirror Booth</a>
+          <a href="../our-booths/index.html#booth-glam-photo-booth"     class="ev-chip">Glam Photo Booth</a>
+          <a href="../our-booths/index.html#booth-vogue-booth"          class="ev-chip">Vogue Booth</a>
+          <a href="../our-booths/index.html#booth-open-air-photo-booth" class="ev-chip">Open Air Booth</a>
+          <a href="../our-booths/index.html#booth-flipbooks"            class="ev-chip">Flipbooks</a>
+        </div>
+
+        <div class="ev-actions">
+          <a href="../our-booths/index.html" class="btn btn-primary">Browse All Booths →</a>
+          <a href="../contact/index.html"    class="btn btn-ghost">Request a Quote</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     02 — CORPORATE EVENTS
+     ====================================================== -->
+<section class="ev-spotlight ev-corp flip" id="ev-corporate" style="background:var(--bg)">
+  <div class="container">
+    <div class="ev-split">
+
+      <div class="ev-img-side">
+        <div class="ev-img-frame">
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1000&q=85" alt="Corporate event photo booth" loading="lazy">
+          <div class="ev-img-badge">
+            <strong>For Brands & Companies</strong>
+            Fully branded to your guidelines
+          </div>
+          <div class="ev-img-pill">📊 ROI-measurable</div>
+        </div>
+      </div>
+
+      <div class="ev-content">
+        <span class="eyebrow">Corporate Events</span>
+        <h2>Turn your event into a <span class="serif">brand moment.</span></h2>
+        <p class="desc">Corporate events need more than entertainment — they need engagement. Our branded booths turn attendees into brand ambassadors, generating real social media reach long after the event ends.</p>
+
+        <div class="ev-highlights">
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>
+            <div class="ev-hl-text"><strong>100% on-brand experience</strong> — booth wraps, print templates, and digital overlays all match your brand guidelines</div>
+          </div>
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+            <div class="ev-hl-text"><strong>Data capture options</strong> — collect guest emails at the booth to fuel your post-event follow-up campaigns</div>
+          </div>
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg></div>
+            <div class="ev-hl-text"><strong>Branded social media integration</strong> — custom hashtags, instant sharing, measurable organic impressions</div>
+          </div>
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
+            <div class="ev-hl-text"><strong>Fully managed on-site</strong> — our attendant integrates seamlessly into your event flow, no babysitting required</div>
+          </div>
+        </div>
+
+        <p class="ev-booths-label">Top picks for corporate events</p>
+        <div class="ev-chips">
+          <a href="../our-booths/index.html#booth-branded-open-air-photo-booth" class="ev-chip">Branded Open Air</a>
+          <a href="../ai-studio.html"                                            class="ev-chip">AI Photo Booth</a>
+          <a href="../our-booths/index.html#booth-step-n-repeat-photos"          class="ev-chip">Step N' Repeat</a>
+          <a href="../our-booths/index.html#booth-branded-super-social-booth"    class="ev-chip">Branded Super Social</a>
+          <a href="../our-booths/index.html#booth-360-slow-motion-booth"         class="ev-chip">360 Slow Motion</a>
+        </div>
+
+        <div class="ev-actions">
+          <a href="../our-booths/index.html" class="btn btn-primary">Browse All Booths →</a>
+          <a href="../contact/index.html"    class="btn btn-ghost">Request a Quote</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     03 — COLLEGES
+     ====================================================== -->
+<section class="ev-spotlight ev-college" id="ev-colleges" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="ev-split">
+
+      <div class="ev-img-side">
+        <div class="ev-img-frame">
+          <img src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?auto=format&fit=crop&w=1000&q=85" alt="College event photo booth" loading="lazy">
+          <div class="ev-img-badge">
+            <strong>Campus Events</strong>
+            Homecoming · Prom · Gala
+          </div>
+          <div class="ev-img-pill">🎓 Campus experts</div>
+        </div>
+      </div>
+
+      <div class="ev-content">
+        <span class="eyebrow">Colleges</span>
+        <h2>Campus energy, <span class="serif">captured perfectly.</span></h2>
+        <p class="desc">From prom nights to homecoming galas and end-of-year banquets — college events demand high-energy, tech-forward experiences that students actually line up for.</p>
+
+        <div class="ev-highlights">
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></div>
+            <div class="ev-hl-text"><strong>360° slow-motion video</strong> — the #1 requested feature on college campuses right now</div>
+          </div>
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z"/></svg></div>
+            <div class="ev-hl-text"><strong>GIFs, boomerangs & AI transformations</strong> — perfectly shareable content for Instagram, TikTok, and Snapchat</div>
+          </div>
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg></div>
+            <div class="ev-hl-text"><strong>Instant wireless sharing</strong> — text &amp; AirDrop to any device in under 5 seconds</div>
+          </div>
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18V15c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-3.82L21 9 12 3z"/></svg></div>
+            <div class="ev-hl-text"><strong>School-branded everything</strong> — mascot, colors, custom messaging — your institution front and center</div>
+          </div>
+        </div>
+
+        <p class="ev-booths-label">Top picks for college events</p>
+        <div class="ev-chips">
+          <a href="../our-booths/index.html#booth-360-slow-motion-booth"        class="ev-chip">360 Slow Motion</a>
+          <a href="../our-booths/index.html#booth-animated-gif-photo-booth"     class="ev-chip">Animated GIF Booth</a>
+          <a href="../our-booths/index.html#booth-super-social-roamer"          class="ev-chip">Super Social Roamer</a>
+          <a href="../our-booths/index.html#booth-open-air-super-booth"         class="ev-chip">Open Air Super Booth</a>
+          <a href="../ai-studio.html"                                            class="ev-chip">AI Photo Booth</a>
+        </div>
+
+        <div class="ev-actions">
+          <a href="../our-booths/index.html" class="btn btn-primary">Browse All Booths →</a>
+          <a href="../contact/index.html"    class="btn btn-ghost">Request a Quote</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     04 — HOLIDAY PARTIES
+     ====================================================== -->
+<section class="ev-spotlight ev-holiday flip" id="ev-holiday" style="background:var(--bg)">
+  <div class="container">
+    <div class="ev-split">
+
+      <div class="ev-img-side">
+        <div class="ev-img-frame">
+          <img src="https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&w=1000&q=85" alt="Holiday party photo booth" loading="lazy">
+          <div class="ev-img-badge">
+            <strong>Holiday Season</strong>
+            Book early — dates fill fast
+          </div>
+          <div class="ev-img-pill">🎄 Season's favorite</div>
+        </div>
+      </div>
+
+      <div class="ev-content">
+        <span class="eyebrow">Holiday Parties</span>
+        <h2>The life of your <span class="serif">holiday celebration.</span></h2>
+        <p class="desc">Whether it's an office Christmas party, a New Year's eve bash, or a Hanukkah gathering — a photo booth transforms any holiday event into an instant classic your team will talk about for years.</p>
+
+        <div class="ev-highlights">
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <div class="ev-hl-text"><strong>Seasonal-themed backdrops &amp; props</strong> — holiday setups that instantly set the mood</div>
+          </div>
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>
+            <div class="ev-hl-text"><strong>Holiday-branded print templates</strong> — customized to your company and season, printed on the spot</div>
+          </div>
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
+            <div class="ev-hl-text"><strong>Green screen magic</strong> — teleport guests to any holiday scene: the North Pole, Times Square, Cancún</div>
+          </div>
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+            <div class="ev-hl-text"><strong>Something for everyone</strong> — from the CEO to the intern, the booth brings the whole office together</div>
+          </div>
+        </div>
+
+        <p class="ev-booths-label">Perfect booths for holiday parties</p>
+        <div class="ev-chips">
+          <a href="../our-booths/index.html#booth-open-air-green-screen-photo-booth" class="ev-chip">Green Screen Booth</a>
+          <a href="../our-booths/index.html#booth-animated-gif-photo-booth"          class="ev-chip">Animated GIF Booth</a>
+          <a href="../our-booths/index.html#booth-black-light-booth"                 class="ev-chip">Black Light Booth</a>
+          <a href="../our-booths/index.html#booth-virtual-photo-booth"               class="ev-chip">Virtual Photo Booth</a>
+          <a href="../our-booths/index.html#booth-open-air-photo-booth"              class="ev-chip">Open Air Booth</a>
+        </div>
+
+        <div class="ev-actions">
+          <a href="../our-booths/index.html" class="btn btn-primary">Browse All Booths →</a>
+          <a href="../contact/index.html"    class="btn btn-ghost">Request a Quote</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     05 — MITZVAH
+     ====================================================== -->
+<section class="ev-spotlight ev-mitzvah" id="ev-mitzvah" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="ev-split">
+
+      <div class="ev-img-side">
+        <div class="ev-img-frame">
+          <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&fit=crop&w=1000&q=85" alt="Mitzvah photo booth" loading="lazy">
+          <div class="ev-img-badge">
+            <strong>Bar &amp; Bat Mitzvah</strong>
+            Special occasion specialists
+          </div>
+          <div class="ev-img-pill">✡ Since 2012</div>
+        </div>
+      </div>
+
+      <div class="ev-content">
+        <span class="eyebrow">Mitzvah</span>
+        <h2>The centerpiece of an <span class="serif">extraordinary milestone.</span></h2>
+        <p class="desc">A Bar or Bat Mitzvah is a once-in-a-lifetime celebration. We match every detail to your theme — and keep guests of every age and generation entertained from cocktail hour through the last dance.</p>
+
+        <div class="ev-highlights">
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z"/></svg></div>
+            <div class="ev-hl-text"><strong>Fully themed to your celebration</strong> — colors, graphics, and patterns match your party motif exactly</div>
+          </div>
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M21 10.12h-6.78l2.74-2.82c-2.73-2.7-7.15-2.8-9.88-.1-2.73 2.71-2.73 7.08 0 9.79s7.15 2.71 9.88 0C18.32 15.65 19 14.08 19 12.1h2c0 1.98-.88 4.55-2.64 6.29-3.51 3.48-9.21 3.48-12.72 0-3.5-3.47-3.53-9.11-.02-12.58s9.14-3.47 12.65 0L21 3v7.12z"/></svg></div>
+            <div class="ev-hl-text"><strong>Scrapbook guestbook add-on</strong> — guests print a strip and sign a message next to it, creating a keepsake the family treasures forever</div>
+          </div>
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+            <div class="ev-hl-text"><strong>Works for every age</strong> — our booths are as fun for grandparents as they are for the kids on the dance floor</div>
+          </div>
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></div>
+            <div class="ev-hl-text"><strong>360° slow motion add-on</strong> — a cinematic wow-moment for the guest of honor and every table</div>
+          </div>
+        </div>
+
+        <p class="ev-booths-label">Top mitzvah booth picks</p>
+        <div class="ev-chips">
+          <a href="../our-booths/index.html#booth-giant-mirror-booth"    class="ev-chip">Giant Mirror Booth</a>
+          <a href="../our-booths/index.html#booth-selfie-mirror-booth"   class="ev-chip">Selfie Mirror Booth</a>
+          <a href="../our-booths/index.html#booth-360-slow-motion-booth" class="ev-chip">360 Slow Motion</a>
+          <a href="../our-booths/index.html#booth-open-air-photo-booth"  class="ev-chip">Open Air Booth</a>
+          <a href="../our-booths/index.html#booth-flipbooks"             class="ev-chip">Flipbooks</a>
+        </div>
+
+        <div class="ev-actions">
+          <a href="../our-booths/index.html" class="btn btn-primary">Browse All Booths →</a>
+          <a href="../contact/index.html"    class="btn btn-ghost">Request a Quote</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     06 — PRIVATE / SOCIAL
+     ====================================================== -->
+<section class="ev-spotlight ev-private flip" id="ev-private" style="background:var(--bg)">
+  <div class="container">
+    <div class="ev-split">
+
+      <div class="ev-img-side">
+        <div class="ev-img-frame">
+          <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=1000&q=85" alt="Private party photo booth" loading="lazy">
+          <div class="ev-img-badge">
+            <strong>Birthdays &amp; Anniversaries</strong>
+            Private party specialists
+          </div>
+          <div class="ev-img-pill">🎉 All ages welcome</div>
+        </div>
+      </div>
+
+      <div class="ev-content">
+        <span class="eyebrow">Private / Social</span>
+        <h2>Make your party the one <span class="serif">they never forget.</span></h2>
+        <p class="desc">Sweet 16s, milestone birthdays, anniversary parties, backyard celebrations — whatever the occasion, a photo booth adds instant "wow" and gives every guest a keepsake they'll keep on their fridge for years.</p>
+
+        <div class="ev-highlights">
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z"/></svg></div>
+            <div class="ev-hl-text"><strong>AI transformations on the spot</strong> — guests become superheroes, royalty, or cyberpunk icons in under 10 seconds</div>
+          </div>
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>
+            <div class="ev-hl-text"><strong>Custom backdrop options</strong> — choose from hundreds of backdrops or bring your own concept and we'll build it</div>
+          </div>
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg></div>
+            <div class="ev-hl-text"><strong>Set up anywhere</strong> — backyards, restaurants, rooftops, event halls — we make it work in any space</div>
+          </div>
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+            <div class="ev-hl-text"><strong>Unlimited prints for all guests</strong> — everyone leaves with a physical memory, not just a digital one</div>
+          </div>
+        </div>
+
+        <p class="ev-booths-label">Great choices for private parties</p>
+        <div class="ev-chips">
+          <a href="../ai-studio.html"                                             class="ev-chip">AI Photo Booth</a>
+          <a href="../our-booths/index.html#booth-glam-photo-booth"              class="ev-chip">Glam Booth</a>
+          <a href="../our-booths/index.html#booth-custom-photo-booth"            class="ev-chip">Custom Photo Booth</a>
+          <a href="../our-booths/index.html#booth-infinity-mirror-booth"         class="ev-chip">Infinity Mirror</a>
+          <a href="../our-booths/index.html#booth-open-air-super-booth"          class="ev-chip">Open Air Super Booth</a>
+        </div>
+
+        <div class="ev-actions">
+          <a href="../our-booths/index.html" class="btn btn-primary">Browse All Booths →</a>
+          <a href="../contact/index.html"    class="btn btn-ghost">Request a Quote</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     07 — PLANNERS & DJS
+     ====================================================== -->
+<section class="ev-spotlight ev-planner" id="ev-planners" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="ev-split">
+
+      <div class="ev-img-side">
+        <div class="ev-img-frame">
+          <img src="https://images.unsplash.com/photo-1493676304819-0d7a8d026dcf?auto=format&fit=crop&w=1000&q=85" alt="DJ and event planner photo booth" loading="lazy">
+          <div class="ev-img-badge">
+            <strong>Industry Partners</strong>
+            Referral program available
+          </div>
+          <div class="ev-img-pill">🤝 14+ yr relationships</div>
+        </div>
+      </div>
+
+      <div class="ev-content">
+        <span class="eyebrow">Planners &amp; DJs</span>
+        <h2>Your clients deserve the best. <span class="serif">We deliver it.</span></h2>
+        <p class="desc">New England's most reliable photo booth partner for event planners and DJs. We show up on time, we set up fast, and we never upstage the DJ — we just make sure everyone's having the time of their lives in front of the lens.</p>
+
+        <div class="ev-highlights">
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
+            <div class="ev-hl-text"><strong>Reliable. Every single time.</strong> — 14 years, thousands of events, zero no-shows. Your reputation is safe with us.</div>
+          </div>
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+            <div class="ev-hl-text"><strong>Dedicated partner account</strong> — streamlined booking, flexible billing, and priority scheduling all season long</div>
+          </div>
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+            <div class="ev-hl-text"><strong>White-label options</strong> — our booth, your brand. Or just let us run the experience seamlessly under our own name.</div>
+          </div>
+          <div class="ev-highlight">
+            <div class="ev-hl-icon"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+            <div class="ev-hl-text"><strong>Referral commissions</strong> — earn on every client you send our way. Ask us about our partner program.</div>
+          </div>
+        </div>
+
+        <p class="ev-booths-label">Most-booked for planner &amp; DJ packages</p>
+        <div class="ev-chips">
+          <a href="../our-booths/index.html#booth-branded-super-social-booth" class="ev-chip">Branded Super Social</a>
+          <a href="../our-booths/index.html#booth-super-social-roamer"        class="ev-chip">Super Social Roamer</a>
+          <a href="../our-booths/index.html#booth-open-air-super-booth"       class="ev-chip">Open Air Super Booth</a>
+          <a href="../ai-studio.html"                                          class="ev-chip">AI Photo Booth</a>
+          <a href="../our-booths/index.html#booth-360-slow-motion-booth"      class="ev-chip">360 Slow Motion</a>
+        </div>
+
+        <div class="ev-actions">
+          <a href="../contact/index.html" class="btn btn-primary">Become a Partner →</a>
+          <a href="../contact/index.html" class="btn btn-ghost">Request a Quote</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     WHY PHOTO BOOTH SUPPLIER
+     ====================================================== -->
+<section style="padding:100px 0;background:var(--bg)">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Why Photo Booth Supplier</span>
+      <h2 class="section-title">What makes the <span class="serif">difference.</span></h2>
+      <p class="section-sub">14 years of New England events have taught us exactly what separates a good booth from an unforgettable one.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
+        <h4>Attendant always included</h4>
+        <p>Every booking comes with a professional on-site attendant who manages the booth, keeps the line moving, and handles any technical issue — so you don't have to think about it.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>
+        <h4>Custom print design included</h4>
+        <p>Our designers create a print template specific to your event — names, dates, logos, colors — at no extra charge. Every strip is a personalized keepsake, not a generic printout.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg></div>
+        <h4>Private online gallery next day</h4>
+        <p>Every photo from your event is uploaded to a private shareable gallery and delivered within 24 hours — so guests who missed a shot can still grab their photos.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z"/></svg></div>
+        <h4>30+ booth styles to choose from</h4>
+        <p>We're not a one-booth company. With over 30 unique styles, we match the perfect experience to your event type, venue size, and guest demographic — every single time.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg></div>
+        <h4>All 6 New England states</h4>
+        <p>From Boston to Burlington, Providence to Portland — we cover the entire region with the same team, the same gear, and the same quality every time.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></div>
+        <h4>AI Photo Booth — only in New England</h4>
+        <p>Our AI Photo Booth is New England's most unique rental — guests step in and become anyone in any style in under 10 seconds. There is nothing else like it in the market.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     STATS
+     ====================================================== -->
+<section class="stats-band">
+  <div class="stats-band-watermark">PBS</div>
+  <div class="container stats-band-inner">
+    <div>
+      <span class="stats-eyebrow">By the numbers</span>
+      <h3>New England's most <span class="serif">booked supplier.</span></h3>
+      <p class="stats-band-sub">Trusted by planners, couples, corporations, and colleges across all 6 states since 2012.</p>
+    </div>
+    <div class="stats-band-grid">
+      <div class="stat-big">
+        <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" fill="#fff"/></svg></div>
+        <div class="num">5,200<span class="plus">+</span></div>
+        <div class="label">Events Served</div>
+      </div>
+      <div class="stat-big">
+        <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z" fill="#fff"/></svg></div>
+        <div class="num">30<span class="plus">+</span></div>
+        <div class="label">Booth Styles</div>
+      </div>
+      <div class="stat-big">
+        <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z" fill="#fff"/></svg></div>
+        <div class="num">98K<span class="plus">+</span></div>
+        <div class="label">Guests Captured</div>
+      </div>
+      <div class="stat-big">
+        <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" fill="#fff"/></svg></div>
+        <div class="num">6</div>
+        <div class="label">States Covered</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     TESTIMONIALS
+     ====================================================== -->
+<section style="padding:100px 0;background:var(--bg)">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">What clients say</span>
+      <h2 class="section-title">Real events. Real <span class="serif">reactions.</span></h2>
+    </div>
+    <div class="ev-testimonials-grid">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>"Our guests would not leave the booth. The Selfie Mirror was the absolute hit of the reception — we still have friends asking who we used. Worth every single penny."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">S</div>
+          <div>
+            <div class="author-name">Sarah M.</div>
+            <div class="author-meta">Wedding · Newport, RI</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>"We've worked with Photo Booth Supplier at 15+ corporate events. They're the only vendor we've never had to chase down. Show up early, look professional, clients love them."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">J</div>
+          <div>
+            <div class="author-name">James T.</div>
+            <div class="author-meta">Event Planner · Boston, MA</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>"Booked the 360 booth for our son's Bar Mitzvah. Every single kid was in line all night. Photos came out amazing and the online gallery was ready the next morning."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">R</div>
+          <div>
+            <div class="author-name">Rachel K.</div>
+            <div class="author-meta">Bar Mitzvah · Brookline, MA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     CTA
+     ====================================================== -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box">
+      <h2>Ready to book your <span class="serif">perfect booth?</span></h2>
+      <p>Tell us about your event and we'll recommend the best fit from our 30+ lineup.</p>
+      <div class="btn-row">
+        <a href="../contact/index.html"    class="btn btn-light">Request a Free Quote →</a>
+        <a href="../our-booths/index.html" class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,0.35)">Browse All 30+ Booths</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div data-include="../includes/footer.html"></div>
+
+<script>window.SITE_BASE='../';</script>
+<script src="../js/includes.js"></script>
+<script src="../js/main.js"></script>
+<script>
+/* ── Scroll-spy: highlight active jump-nav pill ───────────── */
+(function () {
+  const pills = Array.from(document.querySelectorAll('.ev-jump-pill'));
+  const ids   = ['ev-weddings','ev-corporate','ev-colleges','ev-holiday','ev-mitzvah','ev-private','ev-planners'];
+
+  function update () {
+    let active = '';
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 180) active = id;
+    });
+    pills.forEach(p => {
+      const target = p.getAttribute('href').replace('#','');
+      p.classList.toggle('active', target === active);
+    });
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+
+</body>
+</html>
