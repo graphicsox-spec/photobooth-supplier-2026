@@ -419,6 +419,55 @@ img,svg{max-width:100%;display:block}
   100% {opacity:0}
 }
 
+/* AI Photo Booth video inside hero booth screen */
+.booth-video{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  border-radius:inherit;
+  z-index:1;
+}
+
+/* Rotating booth showcase */
+.booth-showcase-card{
+  text-decoration:none;
+  display:flex;flex-direction:column;
+  cursor:pointer;
+  transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
+.booth-showcase-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 32px 80px rgba(0,0,0,0.5);
+}
+.booth-slides{
+  position:absolute;inset:0;
+  border-radius:inherit;overflow:hidden;
+  z-index:1;
+}
+.booth-slide{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity 0.8s ease;
+}
+.booth-slide.active{opacity:1;}
+
+/* Dot indicators inside booth-controls */
+.booth-dots{
+  display:flex;align-items:center;gap:6px;
+}
+.bdot{
+  width:7px;height:7px;border-radius:50%;
+  background:rgba(255,255,255,0.3);
+  cursor:pointer;
+  transition:background 0.3s, transform 0.3s;
+}
+.bdot.active{
+  background:#fff;
+  transform:scale(1.3);
+}
+
 /* AI Studio hero collage */
 .hero-collage{position:relative;height:620px}
 .hero-orb-ai{
