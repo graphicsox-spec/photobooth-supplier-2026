@@ -1,5 +1,5 @@
 /* ===================================================================
-   PHOTO BOOTH SUPPLIER — Main JavaScript
+   PHOTO BOOTH SUPPLIER - Main JavaScript
    =================================================================== */
 
 (async function () {
@@ -119,7 +119,7 @@
       reveal.observe(el);
     });
 
-  // ----- Events marquee — duplicate cards for a seamless infinite scroll -----
+  // ----- Events marquee - duplicate cards for a seamless infinite scroll -----
   const eventsTrack = document.getElementById('events-track');
   if (eventsTrack && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     eventsTrack.innerHTML += eventsTrack.innerHTML; // second identical copy
@@ -190,7 +190,7 @@
     let closeTimer = null;
     const openDrawer = () => {
       clearTimeout(closeTimer);
-      drawer.classList.add('show');   // display:block — layer exists only while open
+      drawer.classList.add('show');   // display:block - layer exists only while open
       void drawer.offsetWidth;        // reflow so the slide-in transition runs
       drawer.classList.add('open');
       document.body.classList.add('drawer-open');
